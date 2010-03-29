@@ -1,6 +1,6 @@
-class CreateNotebook < ActiveRecord::Migration
+class CreateNotebooks < ActiveRecord::Migration
   def self.up
-    create_table :notebook do |t|
+    create_table :notebooks do |t|
       t.string :code,:null=>false
       t.string :name
       t.string :mark
@@ -37,11 +37,10 @@ class CreateNotebook < ActiveRecord::Migration
       t.references :cost
       t.string :drive
       t.string :grafic_card
-      
     end
   end
 
   def self.down
-    drop_table :notebook
+    drop_table :notebooks
   end
 end

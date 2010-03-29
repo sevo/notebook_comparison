@@ -5260,3 +5260,271 @@ Migrating to CreateNotebookPort (20100318182940)
   [4;35;1mSQL (0.5ms)[0m   [0mSHOW FIELDS FROM `store`[0m
   [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `store`[0m
   [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `store`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (3.1ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateNotebook (20100317203631)
+  [4;35;1mSQL (9.5ms)[0m   [0mCREATE TABLE `notebook` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `code` varchar(255) NOT NULL, `name` varchar(255), `mark` varchar(255), `processor_type` varchar(255), `processor_freq` int(11), `l2_cache` int(11), `display_diag` int(11), `display_resolution_ver` int(11), `display_resolution_hor` int(11), `memory_type` varchar(255), `memory_capacity` int(11), `memory_bus_freq` int(11), `disc_capacity` int(11), `disc_rotations` int(11), `webcam` tinyint(1) DEFAULT 0, `webcam_resolution_ver` int(11), `webcam_resolution_hor` int(11), `webcam_resolution_pixels` int(11), `network` varchar(255), `wifi` tinyint(1) DEFAULT 0, `bluetooth` tinyint(1) DEFAULT 0, `numeric_keyboard` tinyint(1) DEFAULT 0, `weight` float, `batery_cell_num` int(11), `batery_life_time` float, `size_x` float, `size_y` float, `size_z` float, `touchpad` tinyint(1) DEFAULT 0, `trackpoint` tinyint(1) DEFAULT 0, `modem` tinyint(1) DEFAULT 0, `picture_link` varchar(255), `description` text, `cost_id` int(11), `drive` varchar(255), `grafic_card` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100317203631')[0m
+Migrating to CreateCardType (20100317213024)
+  [4;35;1mSQL (3.2ms)[0m   [0mCREATE TABLE `card_type` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `type` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100317213024')[0m
+Migrating to CreateOs (20100317213652)
+  [4;35;1mSQL (4.5ms)[0m   [0mCREATE TABLE `OS` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `mark` varchar(255), `type` varchar(255), `version` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100317213652')[0m
+Migrating to CreateCost (20100317214016)
+  [4;35;1mSQL (3.1ms)[0m   [0mCREATE TABLE `cost` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `date` date, `cost_wdph` float) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100317214016')[0m
+Migrating to CreateNotebookCardType (20100317214754)
+  [4;35;1mSQL (2.9ms)[0m   [0mCREATE TABLE `notebook_card_type` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `notebook_id` int(11), `card_type_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100317214754')[0m
+Migrating to CreateNotebookOs (20100317215113)
+  [4;35;1mSQL (3.3ms)[0m   [0mCREATE TABLE `notebook_os` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `notebook_id` int(11), `os_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100317215113')[0m
+Migrating to CreateNotebookCost (20100317215214)
+  [4;35;1mSQL (3.0ms)[0m   [0mCREATE TABLE `notebook_cost` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `notebook_id` int(11), `cost_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100317215214')[0m
+Migrating to CreatePort (20100318182030)
+  [4;35;1mSQL (3.2ms)[0m   [0mCREATE TABLE `port` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `type` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100318182030')[0m
+Migrating to CreateStore (20100318182326)
+  [4;35;1mSQL (3.3ms)[0m   [0mCREATE TABLE `store` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `email` text, `link` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100318182326')[0m
+Migrating to CreateNotebookStore (20100318182500)
+  [4;35;1mSQL (4.4ms)[0m   [0mCREATE TABLE `notebook_store` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `cost_dph` float, `cost_wdph` float, `notebook_id` int(11), `store_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100318182500')[0m
+Migrating to CreateNotebookPort (20100318182940)
+  [4;35;1mSQL (3.2ms)[0m   [0mCREATE TABLE `notebook_port` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `number` int(11), `notebook_id` int(11), `port_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100318182940')[0m
+Migrating to CreateNotebooks (20100329091033)
+  [4;35;1mSQL (4.1ms)[0m   [0mCREATE TABLE `notebooks` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `code` varchar(255) NOT NULL, `name` varchar(255), `mark` varchar(255), `processor_type` varchar(255), `processor_freq` int(11), `l2_cache` int(11), `display_diag` int(11), `display_resolution_ver` int(11), `display_resolution_hor` int(11), `memory_type` varchar(255), `memory_capacity` int(11), `memory_bus_freq` int(11), `disc_capacity` int(11), `disc_rotations` int(11), `webcam` tinyint(1) DEFAULT 0, `webcam_resolution_ver` int(11), `webcam_resolution_hor` int(11), `webcam_resolution_pixels` int(11), `network` varchar(255), `wifi` tinyint(1) DEFAULT 0, `bluetooth` tinyint(1) DEFAULT 0, `numeric_keyboard` tinyint(1) DEFAULT 0, `weight` float, `batery_cell_num` int(11), `batery_life_time` float, `size_x` float, `size_y` float, `size_z` float, `touchpad` tinyint(1) DEFAULT 0, `trackpoint` tinyint(1) DEFAULT 0, `modem` tinyint(1) DEFAULT 0, `picture_link` varchar(255), `description` text, `cost_id` int(11), `drive` varchar(255), `grafic_card` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100329091033')[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `OS`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `OS`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `OS`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW FIELDS FROM `card_type`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `card_type`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `card_type`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW FIELDS FROM `cost`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `cost`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `cost`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW FIELDS FROM `notebook`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mdescribe `notebook`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `notebook`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW FIELDS FROM `notebook_card_type`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `notebook_card_type`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `notebook_card_type`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW FIELDS FROM `notebook_cost`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `notebook_cost`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `notebook_cost`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW FIELDS FROM `notebook_os`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `notebook_os`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `notebook_os`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `notebook_port`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `notebook_port`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `notebook_port`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW FIELDS FROM `notebook_store`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `notebook_store`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW KEYS FROM `notebook_store`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW FIELDS FROM `notebooks`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mdescribe `notebooks`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `notebooks`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `port`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `port`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `port`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW FIELDS FROM `store`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `store`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW KEYS FROM `store`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateNotebooks (20100329091033)
+  [4;36;1mSQL (2.2ms)[0m   [0;1mDROP TABLE `notebooks`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mDELETE FROM schema_migrations WHERE version = '20100329091033'[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW FIELDS FROM `OS`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `OS`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `OS`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW FIELDS FROM `card_type`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `card_type`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW KEYS FROM `card_type`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW FIELDS FROM `cost`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `cost`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW KEYS FROM `cost`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW FIELDS FROM `notebook`[0m
+  [4;35;1mSQL (2.9ms)[0m   [0mdescribe `notebook`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `notebook`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW FIELDS FROM `notebook_card_type`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `notebook_card_type`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `notebook_card_type`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW FIELDS FROM `notebook_cost`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `notebook_cost`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW KEYS FROM `notebook_cost`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW FIELDS FROM `notebook_os`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `notebook_os`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `notebook_os`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW FIELDS FROM `notebook_port`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `notebook_port`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `notebook_port`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW FIELDS FROM `notebook_store`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `notebook_store`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `notebook_store`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW FIELDS FROM `port`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `port`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW KEYS FROM `port`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW FIELDS FROM `store`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `store`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `store`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateNotebookPort (20100318182940)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (3.9ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateCardType (20100317213024)
+Migrating to CreateOs (20100317213652)
+Migrating to CreateCost (20100317214016)
+Migrating to CreateNotebookCardType (20100317214754)
+Migrating to CreateNotebookOs (20100317215113)
+Migrating to CreateNotebookCost (20100317215214)
+Migrating to CreatePort (20100318182030)
+Migrating to CreateStore (20100318182326)
+Migrating to CreateNotebookStore (20100318182500)
+Migrating to CreateNotebookPort (20100318182940)
+Migrating to CreateNotebooks (20100329091033)
+  [4;36;1mSQL (3.4ms)[0m   [0;1mCREATE TABLE `notebooks` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `code` varchar(255) NOT NULL, `name` varchar(255), `mark` varchar(255), `processor_type` varchar(255), `processor_freq` int(11), `l2_cache` int(11), `display_diag` int(11), `display_resolution_ver` int(11), `display_resolution_hor` int(11), `memory_type` varchar(255), `memory_capacity` int(11), `memory_bus_freq` int(11), `disc_capacity` int(11), `disc_rotations` int(11), `webcam` tinyint(1) DEFAULT 0, `webcam_resolution_ver` int(11), `webcam_resolution_hor` int(11), `webcam_resolution_pixels` int(11), `network` varchar(255), `wifi` tinyint(1) DEFAULT 0, `bluetooth` tinyint(1) DEFAULT 0, `numeric_keyboard` tinyint(1) DEFAULT 0, `weight` float, `batery_cell_num` int(11), `batery_life_time` float, `size_x` float, `size_y` float, `size_z` float, `touchpad` tinyint(1) DEFAULT 0, `trackpoint` tinyint(1) DEFAULT 0, `modem` tinyint(1) DEFAULT 0, `picture_link` varchar(255), `description` text, `cost_id` int(11), `drive` varchar(255), `grafic_card` varchar(255)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20100329091033')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW FIELDS FROM `OS`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `OS`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `OS`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW FIELDS FROM `card_type`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `card_type`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `card_type`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW FIELDS FROM `cost`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `cost`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `cost`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW FIELDS FROM `notebook_card_type`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `notebook_card_type`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `notebook_card_type`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW FIELDS FROM `notebook_cost`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `notebook_cost`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `notebook_cost`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW FIELDS FROM `notebook_os`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `notebook_os`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW KEYS FROM `notebook_os`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW FIELDS FROM `notebook_port`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `notebook_port`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `notebook_port`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW FIELDS FROM `notebook_store`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `notebook_store`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `notebook_store`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW FIELDS FROM `notebooks`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mdescribe `notebooks`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `notebooks`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW FIELDS FROM `port`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `port`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `port`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW FIELDS FROM `store`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `store`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `store`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mNotebook Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `notebooks`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (3.1ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (32.3ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateOs (20100317213652)
+  [4;35;1mSQL (2.5ms)[0m   [0mCREATE TABLE `OS` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `mark` varchar(255), `type` varchar(255), `version` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100317213652')[0m
+Migrating to CreateNotebookOs (20100317215113)
+  [4;35;1mSQL (2.4ms)[0m   [0mCREATE TABLE `notebook_os` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `notebook_id` int(11), `os_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100317215113')[0m
+Migrating to CreateNotebooks (20100329091033)
+  [4;35;1mSQL (23.4ms)[0m   [0mCREATE TABLE `notebooks` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `code` varchar(255) NOT NULL, `name` varchar(255), `mark` varchar(255), `processor_type` varchar(255), `processor_freq` int(11), `l2_cache` int(11), `display_diag` int(11), `display_resolution_ver` int(11), `display_resolution_hor` int(11), `memory_type` varchar(255), `memory_capacity` int(11), `memory_bus_freq` int(11), `disc_capacity` int(11), `disc_rotations` int(11), `webcam` tinyint(1) DEFAULT 0, `webcam_resolution_ver` int(11), `webcam_resolution_hor` int(11), `webcam_resolution_pixels` int(11), `network` varchar(255), `wifi` tinyint(1) DEFAULT 0, `bluetooth` tinyint(1) DEFAULT 0, `numeric_keyboard` tinyint(1) DEFAULT 0, `weight` float, `batery_cell_num` int(11), `batery_life_time` float, `size_x` float, `size_y` float, `size_z` float, `touchpad` tinyint(1) DEFAULT 0, `trackpoint` tinyint(1) DEFAULT 0, `modem` tinyint(1) DEFAULT 0, `picture_link` varchar(255), `description` text, `cost_id` int(11), `drive` varchar(255), `grafic_card` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100329091033')[0m
+Migrating to CreateCosts (20100329101554)
+  [4;35;1mSQL (3.5ms)[0m   [0mCREATE TABLE `costs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `date` date, `cost_wdph` float) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100329101554')[0m
+Migrating to CreateCardTypes (20100329101728)
+  [4;35;1mSQL (3.3ms)[0m   [0mCREATE TABLE `card_types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `type` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100329101728')[0m
+Migrating to CreatePorts (20100329101828)
+  [4;35;1mSQL (3.2ms)[0m   [0mCREATE TABLE `ports` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `type` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100329101828')[0m
+Migrating to CreateStores (20100329101913)
+  [4;35;1mSQL (3.3ms)[0m   [0mCREATE TABLE `stores` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `email` text, `link` varchar(255)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100329101913')[0m
+Migrating to CreateNotebookCardTypes (20100329102035)
+  [4;35;1mSQL (3.1ms)[0m   [0mCREATE TABLE `notebook_card_types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `notebook_id` int(11), `card_type_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100329102035')[0m
+Migrating to CreateNotebookCosts (20100329102217)
+  [4;35;1mSQL (3.5ms)[0m   [0mCREATE TABLE `notebook_costs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `notebook_id` int(11), `cost_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100329102217')[0m
+Migrating to CreateNotebookStores (20100329102303)
+  [4;35;1mSQL (3.4ms)[0m   [0mCREATE TABLE `notebook_stores` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `cost_dph` float, `cost_wdph` float, `notebook_id` int(11), `store_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100329102303')[0m
+Migrating to CreateNotebookPorts (20100329102350)
+  [4;35;1mSQL (25.0ms)[0m   [0mCREATE TABLE `notebook_ports` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `number` int(11), `notebook_id` int(11), `port_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20100329102350')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `OS`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `OS`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `OS`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW FIELDS FROM `card_types`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `card_types`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSHOW KEYS FROM `card_types`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW FIELDS FROM `costs`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `costs`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `costs`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `notebook_card_types`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `notebook_card_types`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `notebook_card_types`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW FIELDS FROM `notebook_costs`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `notebook_costs`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `notebook_costs`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `notebook_os`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `notebook_os`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `notebook_os`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW FIELDS FROM `notebook_ports`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `notebook_ports`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW KEYS FROM `notebook_ports`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW FIELDS FROM `notebook_stores`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `notebook_stores`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `notebook_stores`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW FIELDS FROM `notebooks`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mdescribe `notebooks`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `notebooks`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW FIELDS FROM `ports`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `ports`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `ports`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW FIELDS FROM `stores`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mdescribe `stores`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSHOW KEYS FROM `stores`[0m

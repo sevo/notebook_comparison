@@ -1,6 +1,6 @@
-class CreateNotebookStore < ActiveRecord::Migration
+class CreateNotebookStores < ActiveRecord::Migration
   def self.up
-    create_table :notebook_store do |t|
+    create_table :notebook_stores do |t|
       t.float :cost_dph
       t.float :cost_wdph
       t.references :notebook
@@ -9,6 +9,6 @@ class CreateNotebookStore < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :notebook-store
+    drop_table :notebook_stores
   end
 end

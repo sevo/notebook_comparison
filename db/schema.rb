@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100318182940) do
+ActiveRecord::Schema.define(:version => 20100329102350) do
 
   create_table "OS", :force => true do |t|
     t.string "mark"
@@ -17,16 +17,44 @@ ActiveRecord::Schema.define(:version => 20100318182940) do
     t.string "version"
   end
 
-  create_table "card_type", :force => true do |t|
+  create_table "card_types", :force => true do |t|
     t.string "type"
   end
 
-  create_table "cost", :force => true do |t|
+  create_table "costs", :force => true do |t|
     t.date  "date"
     t.float "cost_wdph"
   end
 
-  create_table "notebook", :force => true do |t|
+  create_table "notebook_card_types", :force => true do |t|
+    t.integer "notebook_id"
+    t.integer "card_type_id"
+  end
+
+  create_table "notebook_costs", :force => true do |t|
+    t.integer "notebook_id"
+    t.integer "cost_id"
+  end
+
+  create_table "notebook_os", :force => true do |t|
+    t.integer "notebook_id"
+    t.integer "os_id"
+  end
+
+  create_table "notebook_ports", :force => true do |t|
+    t.integer "number"
+    t.integer "notebook_id"
+    t.integer "port_id"
+  end
+
+  create_table "notebook_stores", :force => true do |t|
+    t.float   "cost_dph"
+    t.float   "cost_wdph"
+    t.integer "notebook_id"
+    t.integer "store_id"
+  end
+
+  create_table "notebooks", :force => true do |t|
     t.string  "code",                                        :null => false
     t.string  "name"
     t.string  "mark"
@@ -65,39 +93,11 @@ ActiveRecord::Schema.define(:version => 20100318182940) do
     t.string  "grafic_card"
   end
 
-  create_table "notebook_card_type", :force => true do |t|
-    t.integer "notebook_id"
-    t.integer "card_type_id"
-  end
-
-  create_table "notebook_cost", :force => true do |t|
-    t.integer "notebook_id"
-    t.integer "cost_id"
-  end
-
-  create_table "notebook_os", :force => true do |t|
-    t.integer "notebook_id"
-    t.integer "os_id"
-  end
-
-  create_table "notebook_port", :force => true do |t|
-    t.integer "number"
-    t.integer "notebook_id"
-    t.integer "port_id"
-  end
-
-  create_table "notebook_store", :force => true do |t|
-    t.float   "cost_dph"
-    t.float   "cost_wdph"
-    t.integer "notebook_id"
-    t.integer "store_id"
-  end
-
-  create_table "port", :force => true do |t|
+  create_table "ports", :force => true do |t|
     t.string "type"
   end
 
-  create_table "store", :force => true do |t|
+  create_table "stores", :force => true do |t|
     t.string "name"
     t.text   "email"
     t.string "link"
