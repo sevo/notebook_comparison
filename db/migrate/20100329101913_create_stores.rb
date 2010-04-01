@@ -2,7 +2,6 @@ class CreateStores < ActiveRecord::Migration
   def self.up
     create_table :stores do |t|
       t.string :name
-      t.text :email
       t.string :link
     end
   end

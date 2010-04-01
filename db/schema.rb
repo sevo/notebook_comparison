@@ -22,18 +22,15 @@ ActiveRecord::Schema.define(:version => 20100329102350) do
   end
 
   create_table "costs", :force => true do |t|
-    t.date  "date"
-    t.float "cost_wdph"
+    t.date    "date"
+    t.float   "cost_wdph"
+    t.integer "store_id"
+    t.integer "notebook_id"
   end
 
   create_table "notebook_card_types", :force => true do |t|
     t.integer "notebook_id"
     t.integer "card_type_id"
-  end
-
-  create_table "notebook_costs", :force => true do |t|
-    t.integer "notebook_id"
-    t.integer "cost_id"
   end
 
   create_table "notebook_os", :force => true do |t|
@@ -48,8 +45,7 @@ ActiveRecord::Schema.define(:version => 20100329102350) do
   end
 
   create_table "notebook_stores", :force => true do |t|
-    t.float   "cost_dph"
-    t.float   "cost_wdph"
+    t.integer "cost_id"
     t.integer "notebook_id"
     t.integer "store_id"
   end
@@ -61,7 +57,7 @@ ActiveRecord::Schema.define(:version => 20100329102350) do
     t.string  "processor_type"
     t.integer "processor_freq"
     t.integer "l2_cache"
-    t.integer "display_diag"
+    t.float   "display_diag"
     t.integer "display_resolution_ver"
     t.integer "display_resolution_hor"
     t.string  "memory_type"
@@ -88,7 +84,6 @@ ActiveRecord::Schema.define(:version => 20100329102350) do
     t.boolean "modem",                    :default => false
     t.string  "picture_link"
     t.text    "description"
-    t.integer "cost_id"
     t.string  "drive"
     t.string  "grafic_card"
   end
@@ -99,7 +94,6 @@ ActiveRecord::Schema.define(:version => 20100329102350) do
 
   create_table "stores", :force => true do |t|
     t.string "name"
-    t.text   "email"
     t.string "link"
   end
 

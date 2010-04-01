@@ -1,13 +1,13 @@
 class CreateNotebooks < ActiveRecord::Migration
   def self.up
     create_table :notebooks do |t|
-      t.string :code,:null=>false
+      t.string :code,:null=>false, :unique=>true
       t.string :name
       t.string :mark
       t.string :processor_type
       t.integer :processor_freq
       t.integer :l2_cache
-      t.integer :display_diag
+      t.float :display_diag
       t.integer :display_resolution_ver
       t.integer :display_resolution_hor
       t.string :memory_type
@@ -34,7 +34,6 @@ class CreateNotebooks < ActiveRecord::Migration
       t.boolean :modem,:default => false
       t.string :picture_link
       t.text :description
-      t.references :cost
       t.string :drive
       t.string :grafic_card
     end

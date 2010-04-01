@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100329091033
+# Schema version: 20100329102350
 #
 # Table name: notebooks
 #
@@ -10,7 +10,7 @@
 #  processor_type           :string(255)
 #  processor_freq           :integer(4)
 #  l2_cache                 :integer(4)
-#  display_diag             :integer(4)
+#  display_diag             :float
 #  display_resolution_ver   :integer(4)
 #  display_resolution_hor   :integer(4)
 #  memory_type              :string(255)
@@ -37,7 +37,6 @@
 #  modem                    :boolean(1)
 #  picture_link             :string(255)
 #  description              :text
-#  cost_id                  :integer(4)
 #  drive                    :string(255)
 #  grafic_card              :string(255)
 #
