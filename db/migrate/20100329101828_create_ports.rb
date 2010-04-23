@@ -1,7 +1,7 @@
 class CreatePorts < ActiveRecord::Migration
   def self.up
     create_table :ports do |t|
-       t.string :type
+       t.string :name
     end
   end
 

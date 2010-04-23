@@ -9,13 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100329102350) do
-
-  create_table "OS", :force => true do |t|
-    t.string "mark"
-    t.string "type"
-    t.string "version"
-  end
+ActiveRecord::Schema.define(:version => 20100421200407) do
 
   create_table "card_types", :force => true do |t|
     t.string "type"
@@ -33,11 +27,6 @@ ActiveRecord::Schema.define(:version => 20100329102350) do
     t.integer "card_type_id"
   end
 
-  create_table "notebook_os", :force => true do |t|
-    t.integer "notebook_id"
-    t.integer "os_id"
-  end
-
   create_table "notebook_ports", :force => true do |t|
     t.integer "number"
     t.integer "notebook_id"
@@ -51,11 +40,11 @@ ActiveRecord::Schema.define(:version => 20100329102350) do
   end
 
   create_table "notebooks", :force => true do |t|
-    t.string  "code",                                        :null => false
+    t.string  "code",                     :null => false
     t.string  "name"
     t.string  "mark"
     t.string  "processor_type"
-    t.integer "processor_freq"
+    t.float   "processor_freq"
     t.integer "l2_cache"
     t.float   "display_diag"
     t.integer "display_resolution_ver"
@@ -65,31 +54,36 @@ ActiveRecord::Schema.define(:version => 20100329102350) do
     t.integer "memory_bus_freq"
     t.integer "disc_capacity"
     t.integer "disc_rotations"
-    t.boolean "webcam",                   :default => false
+    t.boolean "webcam"
     t.integer "webcam_resolution_ver"
     t.integer "webcam_resolution_hor"
     t.integer "webcam_resolution_pixels"
     t.string  "network"
-    t.boolean "wifi",                     :default => false
-    t.boolean "bluetooth",                :default => false
-    t.boolean "numeric_keyboard",         :default => false
-    t.float   "weight"
+    t.boolean "wifi"
+    t.boolean "bluetooth"
+    t.boolean "numeric_keyboard"
+    t.string  "weight"
     t.integer "batery_cell_num"
-    t.float   "batery_life_time"
     t.float   "size_x"
     t.float   "size_y"
     t.float   "size_z"
-    t.boolean "touchpad",                 :default => false
-    t.boolean "trackpoint",               :default => false
-    t.boolean "modem",                    :default => false
+    t.boolean "touchpad"
+    t.boolean "trackpoint"
+    t.boolean "modem"
     t.string  "picture_link"
     t.text    "description"
     t.string  "drive"
     t.string  "grafic_card"
+    t.string  "batery_life_time"
+    t.boolean "card_reader"
+    t.string  "OS"
+    t.string  "monitor_out"
+    t.integer "USB_number"
   end
 
   create_table "ports", :force => true do |t|
     t.string "type"
+    t.string "name"
   end
 
   create_table "stores", :force => true do |t|

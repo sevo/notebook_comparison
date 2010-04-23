@@ -5,7 +5,7 @@ class CreateNotebooks < ActiveRecord::Migration
       t.string :name
       t.string :mark
       t.string :processor_type
-      t.integer :processor_freq
+      t.float :processor_freq
       t.integer :l2_cache
       t.float :display_diag
       t.integer :display_resolution_ver
@@ -23,7 +23,7 @@ class CreateNotebooks < ActiveRecord::Migration
       t.boolean :wifi,:default => false
       t.boolean :bluetooth,:default => false
       t.boolean :numeric_keyboard,:default => false
-      t.float :weight
+      t.string :weight
       t.integer :batery_cell_num
       t.float :batery_life_time
       t.float :size_x

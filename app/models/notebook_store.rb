@@ -1,10 +1,10 @@
 # == Schema Information
-# Schema version: 20100329102350
+# Schema version: 20100421200407
 #
 # Table name: notebook_stores
 #
 #  id          :integer(4)      not null, primary key
-#  cost_wdph   :float
+#  cost_id     :integer(4)
 #  notebook_id :integer(4)
 #  store_id    :integer(4)
 #
