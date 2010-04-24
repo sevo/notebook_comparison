@@ -109,11 +109,11 @@ require 'date'
       notebook = Notebook.find_or_create_by_code(e[:code])   #notebook neexistuje
       notebook.code=e[:code];
       notebook.name=e[:name];
-      notebook.disc_capacity=e[:disc_capacity] if e[:disc_capacity]!=nil
+      notebook.disc_capacity=e[:disc_capacity] if ((e[:disc_capacity]!=nil)&&(e[:disc_capacity]!=0))
       notebook.bluetooth=true if e[:bluetooth]!=nil
-      notebook.memory_capacity=e[:memory_capacity] if e[:memory_capacity]!=nil
+      notebook.memory_capacity=e[:memory_capacity] if ((e[:memory_capacity]!=nil)&&(e[:memory_capacity]!=0))
       notebook.processor_type=e[:processor_type] if e[:processor_type]!=nil
-      notebook.display_diag=e[:display_diag] if e[:display_diag]!=nil
+      notebook.display_diag=e[:display_diag] if ((e[:display_diag]!=nil)&&(e[:display_diag]!=0))
       notebook.save
 
                                                       
@@ -160,7 +160,8 @@ require 'date'
    end
 
    def self.parse_detail
-     counter = 0
+
+    counter = 0
     @telo = ""
     @title = "vysekavac zo stranky"
      [

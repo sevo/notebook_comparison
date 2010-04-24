@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="sk" lang="sk">
+<head>
+        <title><%= title %></title>
+        <%= stylesheet_link_tag 'thingreenline/1', :media => 'screen,projection' %>
+    </head>
+    
+    <body>
+        <div id="container">
+            <div id="header">
+                <h1><%= @title %></h1>
+                
+            </div>
+            <ul id="nav">
+                <li><%= link_to "Domov", 'index' %></li>
+                <li><%= link_to "Obchody", 'stores' %></li>
+                <li><a>home</a></li>
+                <li><a>autor</a></li>
+                <li><a>link</a></li>
+            </ul>
+            <br class="clear" />
+            <%= sidebar %>
+            <div id="content">
+              <%= yield %>
+            </div>
+        </div>
+
+        <div id="footer">
+          <p> Template design by <a href="http://www.sixshootermedia.com">Six Shooter Media</a>.<br />
+            Featured on <a href="http://www.sixshootermedia.com/Pretty_as_a_Picture">Pretty as a Picture</a>, <a href="http://www.openwebdesign.org">OWD.org</a> and <a href="http://www.oswd.org">OSWD.org</a>.<br />
+            &copy; All your copyright information here.
+          </p>
+        </div> 
+    </body>
+</html>

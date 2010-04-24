@@ -4,10 +4,21 @@ class EuroshopController < ApplicationController
     require 'nokogiri'
     require 'date'
 
+  caches_page :index,:stores
+  cache_sweeper :notebook_sweeper
+  cache_sweeper :store_sweeper
 
   def index
-    @title = "Porovnanie notebookov"
-    @telo = "<h1>Porovnanie notebookov</h1>"
+    @title = "Úvodná stránka"
+    @pocet_notebookov =   Notebook.count_by_sql "SELECT COUNT(*) FROM notebooks"
+    @pocet_obchodov =   Store.count_by_sql "SELECT COUNT(*) FROM stores"
+    @sidebar = ""
+
+  end
+
+  def stores
+    @title = "Obchody"
+    @obchody = Store.find(:all)
   end
 
  #toto je tu len pre paradu
