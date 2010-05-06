@@ -9,4 +9,7 @@
 #
 
 class Store < ActiveRecord::Base
+  has_many :notebook_stores, :dependent => :destroy
+  has_many :notebooks, :through => :notebook_stores
+  has_many :costs, :through => :notebook_stores
 end

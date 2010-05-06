@@ -1,0 +1,120 @@
+<% form_tag(:action => "compare", :method => "get") do %>
+ <div id="form_left">
+
+    <%= label_tag(:name1, "Názov:") %>
+    <%= text_field_tag :name1, params[:name1] %><br>
+
+    <%= label_tag(:RAM1, "Pamäť RAM:") %>
+    <%= text_field_tag :RAM1, params[:RAM1], :size => 10 %>GB<br>
+   
+    <%= label_tag(:procesor_type1, "Typ procesoru:") %>
+    <%= text_field_tag :processor_type1, params[:processor_type1] %><br>
+
+    <%= label_tag(:processor_freq1, "Frekvencia procesoru:") %>
+    <%= text_field_tag :processor_freq1, params[:processor_freq1], :size => 10 %>GHz <br>
+
+    <%= label_tag(:display_diag1, "Uhlopriečka displeja:") %>
+    <%= text_field_tag :display_diag1, params[:display_diag1], :size => 10 %>"<br>
+
+    <%= label_tag(:display_resolution_hor1, "Rozlíšenie displeja:") %>
+    <%= text_field_tag :display_resolution_hor1, params[:display_resolution_hor1], :size => 10 %>
+
+    x
+    <%= text_field_tag :display_resolution_ver1, params[:display_resolution_ver1], :size => 10 %><br>
+
+    <%= label_tag(:min_disc_capacity1, "Minimálna kapacita HDD:") %>
+    <%= text_field_tag :min_disc_capacity1, params[:min_disc_capacity1], :size => 10 %>GB<br>
+
+    <%= label_tag(:max_disc_capacity1, "Maximálna kapacita HDD:") %>
+    <%= text_field_tag :max_disc_capacity1, params[:max_disc_capacity1], :size => 10 %>GB<br>
+
+    <%= label_tag(:disc_rotations1, "Otáčky HDD:") %>
+    <%= text_field_tag :disc_rotations1, params[:disc_rotations1], :size => 10 %><br>
+
+    <%= label_tag(:webcam1, "Webkamera:  ") %>
+    <%= label_tag(:webcam1, "áno ") %> <%= radio_button :webcam1, params[:webcam1], true %>
+    <%= label_tag(:webcam1, "nie ") %> <%= radio_button :webcam1, params[:webcam1], false %><br>
+
+    <%= label_tag(:wifi1, "Wifi:") %>
+    <%= label_tag(:wifi1, "áno ") %> <%= radio_button :wifi1, params[:wifi1], true %>
+    <%= label_tag(:wifi1, "nie ") %> <%= radio_button :wifi1, params[:wifi1], false %><br>
+
+    <%= label_tag(:bluetooth1, "Bluetooth:  ") %>
+    <%= label_tag(:bluetooth1, "áno ") %> <%= radio_button :bluetooth1, params[:bluetooth1], true %>
+    <%= label_tag(:bluetooth1, "nie ") %> <%= radio_button :bluetooth1, params[:bluetooth1], false %><br>
+
+    <%= label_tag(:network1, "Sieťová karta:") %>
+    <%= text_field_tag :network1, params[:network1] %><br>
+
+    <%= label_tag(:numeric_keyboard1, "Numerická klávesnica:  ") %>
+    <%= label_tag(:numeric_keyboard1, "áno ") %> <%= radio_button :numeric_keyboard1, params[:numeric_keyboard1], true %>
+    <%= label_tag(:numeric_keyboard1, "nie ") %> <%= radio_button :numeric_keyboard1, params[:numeric_keyboard1], false %><br>
+
+ </div>
+
+ <div id="form_right">
+    <%= label_tag(:name2, "Názov:") %>
+    <%= text_field_tag :name2, params[:name2] %><br>
+   
+    <%= label_tag(:RAM2, "Pamäť RAM:") %>
+    <%= text_field_tag :RAM2, params[:RAM2], :size => 10 %>GB<br>
+
+    <%= label_tag(:procesor_type2, "Typ procesoru:") %>
+    <%= text_field_tag :processor_type2, params[:processor_type2] %><br>
+
+    <%= label_tag(:processor_freq2, "Frekvencia procesoru:") %>
+    <%= text_field_tag :processor_freq2, params[:processor_freq2], :size => 10 %>GHz<br>
+
+    <%= label_tag(:display_diag2, "Uhlopriečka displeja:") %>
+    <%= text_field_tag :display_diag2, params[:display_diag2], :size => 10 %>"<br>
+
+    <%= label_tag(:display_resolution_hor2, "Rozlíšenie displeja:") %>
+    <%= text_field_tag :display_resolution_hor2, params[:display_resolution_hor2], :size => 10 %>
+
+    x
+    <%= text_field_tag :display_resolution_ver2, params[:display_resolution_ver2], :size => 10 %><br>
+
+    <%= label_tag(:min_disc_capacity2, "Minimálna kapacita HDD:") %>
+    <%= text_field_tag :min_disc_capacity2, params[:min_disc_capacity2], :size => 10 %>GB<br>
+
+    <%= label_tag(:max_disc_capacity2, "Maximálna kapacita HDD:") %>
+    <%= text_field_tag :max_disc_capacity2, params[:max_disc_capacity2], :size => 10 %>GB<br>
+
+    <%= label_tag(:disc_rotations2, "Otáčky HDD:") %>
+    <%= text_field_tag :disc_rotations2, params[:disc_rotations2], :size => 10 %><br>
+
+    <%= label_tag(:webcam2, "Webkamera:  ") %>
+    <%= label_tag(:webcam2, "áno ") %> <%= radio_button :webcam2, params[:webcam2], true %>
+    <%= label_tag(:webcam2, "nie ") %> <%= radio_button :webcam2, params[:webcam2], false %><br>
+
+    <%= label_tag(:wifi2, "Wifi:") %>
+    <%= label_tag(:wifi2, "áno ") %> <%= radio_button :wifi2, params[:wifi2], true %>
+    <%= label_tag(:wifi2, "nie ") %> <%= radio_button :wifi2, params[:wifi2], false %><br>
+
+    <%= label_tag(:bluetooth2, "Bluetooth:  ") %>
+    <%= label_tag(:bluetooth2, "áno ") %> <%= radio_button :bluetooth2, params[:bluetooth2], true %>
+    <%= label_tag(:bluetooth2, "nie ") %> <%= radio_button :bluetooth2, params[:bluetooth2], false %><br>
+
+    <%= label_tag(:network2, "Sieťová karta:") %>
+    <%= text_field_tag :network2, params[:network2] %><br>
+
+    <%= label_tag(:numeric_keyboard2, "Numerická klávesnica:  ") %>
+    <%= label_tag(:numeric_keyboard2, "áno ") %> <%= radio_button :numeric_keyboard2, params[:numeric_keyboard2], true %>
+    <%= label_tag(:numeric_keyboard2, "nie ") %> <%= radio_button :numeric_keyboard2, params[:numeric_keyboard2], false %><br>
+
+   
+ </div>
+ <div class="clear">
+    <%= submit_tag("Search") %>
+
+ </div>
+    
+<% end %>
+<!--<script type="text/javascript" src="/javascripts/swfobject.js"></script>
+<%= @graph %>-->
+<span style="color: #669900; font-size: 20px">&#9679;</span>Prvé vyhľadávanie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span style="color: #99ff00; font-size: 20px">&#9679;</span>Druhé vyhľadávanie
+<%= @google %>
+
+<hr>
+

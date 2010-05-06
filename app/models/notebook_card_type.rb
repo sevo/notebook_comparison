@@ -9,4 +9,6 @@
 #
 
 class NotebookCardType < ActiveRecord::Base
+  belongs_to :notebook
+  belongs_to :card_type
 end

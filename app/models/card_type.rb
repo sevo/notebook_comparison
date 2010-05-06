@@ -8,4 +8,6 @@
 #
 
 class CardType < ActiveRecord::Base
+  has_many :notebook_card_types, :dependent => :destroy
+  has_many :notebook, :through => :notebook_card_types
 end

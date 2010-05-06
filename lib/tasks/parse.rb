@@ -4,195 +4,158 @@ require 'open-uri'
 require 'rubygems'
 require 'nokogiri'
 require 'date'
-#require "active_record"
-#require "store"
-#require "notebook"
-#require "notebook_store"
-#require "cost"
+
+
 
    def self.parse_xml
+     obchody = Store.find(:all)
+     obchody.each do |obchod|
 
-    counter = 0
-    @telo = ""
-     [
-      ["euroshop", "http://shop.euroshop.sk/cenikXML.aspx?akt=&skup=1&kat=122&vyr="],
-      ["shm", "http://eshop.shm.sk/cenikXML.aspx?akt=&skup=1&kat=122&vyr="],
-      ["x-computers", "http://eshop.x-computers.sk/cenikXML.aspx?akt=&skup=1&kat=122&vyr="],
-      ["comtec", "http://eshop.comtec.sk/cenikXML.aspx?akt=&skup=1&kat=122&vyr="],
-      ["ASSI computer", "http://assi.ekatalog.biz/cenikXML.aspx?akt=&skup=1&kat=122&vyr="],
-      ["mirocomputers", "http://eshop.mirocomputers.sk/cenikXML.aspx?akt=&skup=1&kat=122&vyr="],
-      ["witto", "http://witto.ekatalog.biz/cenikXML.aspx?akt=&skup=1&kat=122&vyr="],
-      ["jkc", "http://eobchod.jkc.sk/cenikXML.aspx?akt=&skup=1&kat=122&vyr="],
-      ["sattva", "http://www.sattva.sk/cenikXML.aspx?akt=&skup=1&kat=122&vyr="],
-      ["mobilpc", "http://mobilpc.ekatalog.biz/cenikXML.aspx?akt=&skup=1&kat=122&vyr="],
-      ["eshop4you", "http://www.eshop4you.sk/cenikXML.aspx?akt=&skup=1&kat=122&vyr="],
-      ["pc-cennik", "http://www.pc-cennik.sk/cenikXML.aspx?akt=&skup=1&kat=122&vyr="],
-     ].collect do |store_name, url|
-       
-     puts "parsing: "+store_name
-
-    doc = Nokogiri::HTML(open(url))
-
-    rows = doc.xpath("//zbozi[@podkategorie='Mini notebook']|//zbozi[@podkategorie='Tablet PC']|//zbozi[@podkategorie='Intel Core2 Duo']|//zbozi[@podkategori='Intel Core i5']|//zbozi[@podkategorie='Intel Core2 Quad']|//zbozi[@podkategorie='Intel Core i7']|//zbozi[@podkategori='Intel Dual Core']|//zbozi[@podkategorie='Intel Celeron M']|//zbozi[@podkategorie='Intel Core i3']|//zbozi[@podkategorie='AMD Athlon X2']|//zbozi[@podkategorie='Intel Single Core']|//zbozi[@podkategorie='Intel Celeron Dual Core']|//zbozi[@podkategorie='AMD Turion']|//zbozi[@podkategorie='AMD Athlon']|//zbozi[@podkategorie='AMD Turion X2']")
-    obsah = []
-
-    rows.collect do |row|
-    detail = {}
-    [
-      [:code, "@part_number"],
-      [:mark, "@vyrobce"],
-      [:cost_wdph, "@cena"],
-      [:popis, "@popis"],
-      [:podkategoria, "@podkategorie"],
-      [:kod, "@kod"],
-    ].collect do |name, xpath|
-          detail[name] = row.at_xpath(xpath).to_s.strip
-     detail
-    end
-
-    popis = detail[:popis].split(/[\s\/]/)
-
-    detail[:name] = popis[0]+" "+popis[1]
-
-    popis.each {|e| detail[:display_diag]=e.match("^(\\w*-)?[\\D]?\\d\\d([,.]\\d)?(LED)?C?W?\\\"?\\z").to_s.gsub!(/[,.]/,'.').to_f if e=~/^(\w*-)?[\D]?\d\d([,.]\d)?(LED)?C?W?\"?\z/}
-    detail[:display_diag]=detail[:display_diag].match("\\d\\d([,.]\\d)?(LED)?C?W?\\\"?\\z").to_s.gsub!(/[,.]/,'.').to_f if (detail[:display_diag]=~/-/)
-    detail[:display_diag] = nil if detail[:display_diag]==0.0
-
-    popis.each do|e|
-        detail[:disc_capacity]=e.to_i if e=~/\A\d\d+G?(GB)?(SSD)?\z/
-        detail[:disc_capacity]=(e.to_f*1024).to_int if e=~/\A\dT\z/
-    end
-
-    detail[:processor_type] = detail[:podkategoria]+" "+detail[:popis].match("[a-zA-Z]+ ?-?[0-9]+\/").to_s.delete("/").to_s unless(detail[:podkategoria]== "Mini notebook"|| detail[:podkategoria]== "Tablet PC")
-    popis.each {|e| detail[:processor_type]=detail[:processor_type]+" "+e if ((e=~/i[\d]+/)!=nil) } if ((detail[:podkaregoria]=~/Intel Core i/)!=nil)
-    popis.each {|e| detail[:processor_type]=e if ((e=~/[a-zA-Z]+ ?-?[0-9]+\z/)!=nil) } if (detail[:podkategoria]== "Mini notebook"|| detail[:podkategoria]== "Tablet PC")
-
-    popis.each {|e| detail[:memory_capacity]= eval(e.delete('B').delete('G')).to_s if ((e=~/\A\d(GB?)?\z/)||(e=~/\A(\d\+)?\dG?\z/))&&(e!=nil)}
-
-    popis.each {|e| detail[:triG] = e if (e=~/\A3G\z/)&&(detail[:RAM])}
-
-    popis.each {|e| detail[:bluetooth] = true if (e=~/\ABT?\z/)}
-
-    pom=""
-    popis.each do |e|
-
-      pom += "Windows 7 Starter " if (e=~/7st/)
-      pom += "Windows 7 Home Premium " if (e=~/7HP/)
-      pom += "Windows 7 Starter " if (e=~/W7S/)
-      pom += "Windows Vista Business " if (e=~/VB/)
-      pom += "Windows 7 Professional " if (e=~/7P/)
-      pom += "Windows Vista Home Premium " if (e=~/VHP/)
-      pom += "Windows XP Home " if (e=~/XPH/)
-      pom += "Windows 7 Starter " if (e=~/7S/)
-      pom += "Windows 7 Ultimate " if (e=~/7U/)
-      pom += "noOS " if (e=~/noOS/)
-      pom += "Linux " if (e=~/Lin/)
-      pom += "Windows XP Professional " if (e=~/XPP/)
-      pom += "Windows XP " if (e=~/XP/)&&!(e=~/XPP/)&&!(e=~/XPH/)
-
-    end
-    detail[:OS]=pom unless pom==""
-
-    popis.each do |e|
-      detail[:drive] = "DVD" if (e=~/DVD/)
-      detail[:drive] = "Blu Ray" if (e=~/BR/)
-    end
-
-    obsah << detail
+      store_name = obchod.name
+      url = obchod.link + "cenikXML.aspx?akt=&skup=1&kat=122&vyr="
+      puts "parsing: "+store_name
+      begin
+          doc = Nokogiri::HTML(open(url))
+      rescue Exception
+         puts "Error: "+ url
+         next
       end
-    #end
 
-    store = Store.find_by_name(store_name)
-    obsah.each do |e|
+      #v xml subore najde vsetky elementy notebookov
+      rows = doc.xpath("//zbozi[@podkategorie='Mini notebook']|//zbozi[@podkategorie='Tablet PC']|//zbozi[@podkategorie='Intel Core2 Duo']|//zbozi[@podkategori='Intel Core i5']|//zbozi[@podkategorie='Intel Core2 Quad']|//zbozi[@podkategorie='Intel Core i7']|//zbozi[@podkategori='Intel Dual Core']|//zbozi[@podkategorie='Intel Celeron M']|//zbozi[@podkategorie='Intel Core i3']|//zbozi[@podkategorie='AMD Athlon X2']|//zbozi[@podkategorie='Intel Single Core']|//zbozi[@podkategorie='Intel Celeron Dual Core']|//zbozi[@podkategorie='AMD Turion']|//zbozi[@podkategorie='AMD Athlon']|//zbozi[@podkategorie='AMD Turion X2']")
+      obsah = []  #premenna na ulozenie detailov o vsetkych notebookoch
+
+      #ziskanie detailov z elementu notebooku
+      rows.collect do |row|
+          detail = {}
+          [
+            [:code, "@part_number"],
+            [:mark, "@vyrobce"],
+            [:cost_wdph, "@cena"],
+            [:popis, "@popis"],
+            [:podkategoria, "@podkategorie"],
+            [:kod, "@kod"],
+          ].collect do |name, xpath|
+            detail[name] = row.at_xpath(xpath).to_s.strip
+            detail
+          end
+
+          popis = detail[:popis].split(/[\s\/]/)
+
+          detail[:name] = popis[0]+" "+popis[1]
+
+          popis.each {|e| detail[:display_diag]=e.match("^(\\w*-)?[\\D]?\\d\\d([,.]\\d)?(LED)?C?W?\\\"?\\z").to_s.gsub!(/[,.]/,'.').to_f if e=~/^(\w*-)?[\D]?\d\d([,.]\d)?(LED)?C?W?\"?\z/}
+          detail[:display_diag]=detail[:display_diag].match("\\d\\d([,.]\\d)?(LED)?C?W?\\\"?\\z").to_s.gsub!(/[,.]/,'.').to_f if (detail[:display_diag]=~/-/)
+          detail[:display_diag] = nil if detail[:display_diag]==0.0
+
+          popis.each do|e|
+              detail[:disc_capacity]=e.to_i if e=~/\A\d\d+G?(GB)?(SSD)?\z/
+              detail[:disc_capacity]=(e.to_f*1024).to_int if e=~/\A\dT\z/
+          end
+
+          detail[:processor_type] = detail[:podkategoria]+" "+detail[:popis].match("[a-zA-Z]+ ?-?[0-9]+\/").to_s.delete("/").to_s unless(detail[:podkategoria]== "Mini notebook"|| detail[:podkategoria]== "Tablet PC")
+          popis.each {|e| detail[:processor_type]=detail[:processor_type]+" "+e if ((e=~/i[\d]+/)!=nil) } if ((detail[:podkaregoria]=~/Intel Core i/)!=nil)
+          popis.each {|e| detail[:processor_type]=e if ((e=~/[a-zA-Z]+ ?-?[0-9]+\z/)!=nil) } if (detail[:podkategoria]== "Mini notebook"|| detail[:podkategoria]== "Tablet PC")
+
+          popis.each {|e| detail[:memory_capacity]= eval(e.delete('B').delete('G')).to_s if ((e=~/\A\d(GB?)?\z/)||(e=~/\A(\d\+)?\dG?\z/))&&(e!=nil)}
+
+          popis.each {|e| detail[:bluetooth] = true if (e=~/\ABT?\z/)}
+
+          obsah << detail
+       end
+
+      #vlkadanie notebookov do databazy
+      store = Store.find_by_name(store_name)
+      obsah.each do |e|
 
 
-      notebook = Notebook.find_or_create_by_code(e[:code])   #notebook neexistuje
-      notebook.code=e[:code];
-      notebook.name=e[:name];
-      notebook.disc_capacity=e[:disc_capacity] if ((e[:disc_capacity]!=nil)&&(e[:disc_capacity]!=0))
-      notebook.bluetooth=true if e[:bluetooth]!=nil
-      notebook.memory_capacity=e[:memory_capacity] if ((e[:memory_capacity]!=nil)&&(e[:memory_capacity]!=0))
-      notebook.processor_type=e[:processor_type] if e[:processor_type]!=nil
-      notebook.display_diag=e[:display_diag] if ((e[:display_diag]!=nil)&&(e[:display_diag]!=0))
-      notebook.save
-
-                                                      
-      notebook_store=NotebookStore.find_by_notebook_id_and_store_id(notebook.id,store.id)
-      if notebook_store==nil then     #novy notebook v ponuke obchodu#potrebujem mapovanie medzi cenou a note a obchodom a note
-        cena = Cost.new
-        cena.cost_wdph=e[:cost_wdph]
-        cena.date=Date.today
-        cena.store_id=store.id
-        cena.notebook_id=notebook.id
-        cena.save
+        notebook = Notebook.find_or_create_by_code(e[:code])   #vytvorenie notebooku ak neexistuje v databaze
+        notebook.code=e[:code];
+        notebook.name=e[:name];
+        notebook.disc_capacity=e[:disc_capacity] if ((e[:disc_capacity]!=nil)&&(e[:disc_capacity]!=0))
+        notebook.bluetooth=true if e[:bluetooth]!=nil
+        notebook.memory_capacity=e[:memory_capacity] if ((e[:memory_capacity]!=nil)&&(e[:memory_capacity]!=0))
+        notebook.processor_type=e[:processor_type] if e[:processor_type]!=nil
+        notebook.display_diag=e[:display_diag] if ((e[:display_diag]!=nil)&&(e[:display_diag]!=0))
+        notebook.save
 
 
-        notebook_store = NotebookStore.new
-        notebook_store.cost_id=cena.id
-        notebook_store.notebook_id=notebook.id
-        notebook_store.store_id=store.id
-        notebook_store.save
-
-      else
-        cena2 = Cost.find(notebook_store.cost_id)
-        if (cena2!=nil and cena2.date==Date.today and cena2.cost_wdph.to_f<=e[:cost_wdph].to_f) then #osetrenie opakovania sa rovnakych produktov
-          cena2.cost_wdph=e[:cost_wdph]
-          cena2.save
-        elsif (cena2!=nil and cena2.date!=Date.today and cena2.cost_wdph.to_f!=e[:cost_wdph].to_f) then #zmenila sa cena produktu
-             cena = Cost.new
-             cena.cost_wdph=e[:cost_wdph]
-             cena.date=Date.today
-             cena.store_id=store.id
-             cena.notebook_id=notebook.id
-             cena.save
+        notebook_store=NotebookStore.find_by_notebook_id_and_store_id(notebook.id,store.id)
+        if notebook_store==nil then     #novy notebook v ponuke obchodu#potrebujem mapovanie medzi cenou a note a obchodom a note
+          cena = Cost.new
+          cena.cost_wdph=e[:cost_wdph]
+          cena.date=Date.today
+          cena.store_id=store.id
+          cena.notebook_id=notebook.id
+          cena.save
 
 
-             notebook_store.cost_id=cena.id
-             notebook_store.save
+          notebook_store = NotebookStore.new
+          notebook_store.cost_id=cena.id
+          notebook_store.notebook_id=notebook.id
+          notebook_store.store_id=store.id
+          notebook_store.save
+
+        else
+          cena2 = Cost.find(notebook_store.cost_id)
+          if (cena2!=nil and cena2.date==Date.today and cena2.cost_wdph.to_f<=e[:cost_wdph].to_f) then #osetrenie opakovania sa rovnakych produktov
+            cena2.cost_wdph=e[:cost_wdph]
+            cena2.save
+          elsif (cena2!=nil and cena2.date!=Date.today and cena2.cost_wdph.to_f!=e[:cost_wdph].to_f) then #zmenila sa cena produktu
+               cena = Cost.new
+               cena.cost_wdph=e[:cost_wdph]
+               cena.date=Date.today
+               cena.store_id=store.id
+               cena.notebook_id=notebook.id
+               cena.save
+
+               notebook_store.cost_id=cena.id
+               notebook_store.save
+          end
         end
 
 
       end
-
-
-    end
    end
-   end
+ end
 
    def self.parse_detail
 
-    counter = 0
-    @telo = ""
-    @title = "vysekavac zo stranky"
-     [
-      ["euroshop", "http://shop.euroshop.sk"],
-      ["shm", "http://eshop.shm.sk"],
-      ["x-computers", "http://eshop.x-computers.sk"],
-      ["comtec", "http://eshop.comtec.sk"],
-      ["ASSI computer", "http://assi.ekatalog.biz"],
-      ["mirocomputers", "http://eshop.mirocomputers.sk"],
-      ["witto", "http://witto.ekatalog.biz"],
-      ["jkc", "http://eobchod.jkc.sk"],
-      ["sattva", "http://www.sattva.sk"],
-      ["mobilpc", "http://mobilpc.ekatalog.biz"],
-      ["eshop4you", "http://www.eshop4you.sk"],
-      ["pc-cennik", "http://www.pc-cennik.sk"],
-     ].collect do |store_name, adresa|
-      # @telo = ""
-       10.times do |p|
-       #10.times do |p|
-       url = adresa+"/zbozi.aspx?vypis=pe2&cena=G200&skup=1&kat=122&pkat=1934O1646O1906O1647O1729O1710O1752O1937O1968O1969O1970O1788O1789O1790O1929O1918O1418O1913&sort=Popis&desc=0&skladem=0&page="+(p+1).to_s
-       @title = "vysekavac zo stranky"
 
-       @text = []
-       doc = Nokogiri::HTML(open(url))
+     obchody = Store.find(:all)
+     obchody.each do |obchod|
+
+
+       meno = obchod.name
+       adresa = obchod.link
+
+       pocet_stran = 0
+       puts "parsing "+meno
+       url = adresa+"zbozi.aspx?vypis=pe2&cena=G200&skup=1&kat=122&pkat=1934O1646O1906O1647O1729O1710O1752O1937O1968O1969O1970O1788O1789O1790O1929O1918O1418O1913&sort=Popis&desc=0&skladem=0&page=1"
+       begin
+          doc = Nokogiri::HTML(open(url))
+       rescue Exception
+           puts "Error: "+ url
+           next
+       end
+       doc.xpath("//td[@class='strankovani']/a").each {|e| pocet_stran = e.content.match(/\d*/).to_s.to_i if pocet_stran < e.content.match(/\d*/).to_s.to_i}
+
+       pocet_stran.times do |p|
+       #10.times do |p|
+       url = adresa+"zbozi.aspx?vypis=pe2&cena=G200&skup=1&kat=122&pkat=1934O1646O1906O1647O1729O1710O1752O1937O1968O1969O1970O1788O1789O1790O1929O1918O1418O1913&sort=Popis&desc=0&skladem=0&page="+(p+1).to_s
+
+       begin
+          doc = Nokogiri::HTML(open(url))
+       rescue Exception
+           puts "Error: "+ url
+           next
+       end
        obsah = []
 
        rows=doc.xpath("//table[@class='tab1']//tr[@class='tab1_rad1']|//tr[@class='tab1_rad2']")
          rows.collect do |row|
          detail = {}
          [
-           #[:kod, "td[@class='tab1_kod']/text()"],
            [:link, "td[@class='tab1_nazev']/h3/a/@href|td[@class='tab1_nazev_doprodej']/h3/a/@href"],
            [:obrazok, "td[@class='tab1_nahled']/img/@rel"],
            [:cena_wdph, "td[@class='tab1_cena_eu']/text()"],
@@ -206,17 +169,25 @@ require 'date'
          end
 
            obsah.each do |p|
-             ##@telo= @telo+e[:kod].to_s
              pole = {}
-             stranka = Nokogiri::HTML(open(p[:link]+"&page=3-technicke-parametre"))
-             #pole << "<b>kodovanie: </b>"+stranka.encoding
+             begin
+                 stranka = Nokogiri::HTML(open(p[:link]+"&page=3-technicke-parametre"))
+             rescue Exception
+                 puts "Error: "+ p[:link]+"&page=3-technicke-parametre"
+                 next
+             end
              pole_obch = {}
-             stranka_obch = Nokogiri::HTML(open(p[:link]+"&page=2-obchodne-parametre"))
+             begin
+                 stranka_obch = Nokogiri::HTML(open(p[:link]+"&page=2-obchodne-parametre"))
+             rescue Exception
+                 puts "Error: "+ p[:link]+"&page=2-obchodne-parametre"
+                 next
+             end
              stranka_obch.xpath("//tr[@class='tab1_rad1']|//tr[@class='tab1_rad2']").each {|e| pole_obch[e.at_xpath("td[1]").to_s.strip]=e.at_xpath("td[2]").to_s }
              pole_obch.each do |key, value|
-               p[:kod]=value.match(">.+<").to_s.delete("<>Â") if key=~/Part/
-
+               p[:kod]=value.match(">.+<").to_s.delete("<>Â") if key=~/Part/   #ziskanie kodu notebooku
              end
+
              p[:podrobnosti] = ""
              stranka.xpath("//table[@class='tab1']//tr[@class='tab1_rad1']|//tr[@class='tab1_rad2']").each {|e| pole[e.at_xpath("td[1]").to_s.strip]=e.at_xpath("td[2]").to_s }
              #stranka.xpath("//table[@class='tab1']//tr[@class='tab1_rad1']|//tr[@class='tab1_rad2']").each {|e| pole << e}
@@ -385,20 +356,9 @@ require 'date'
            
 
 
-           obsah.each do
-
-           |e| e.collect do |meno, hodnota|
-               if (meno == :podrobnosti) then hodnota.each {|e| @telo = @telo+e+"<br>"}
-               else @telo = @telo+"<b> "+meno.to_s+" </b>"+hodnota.to_s+"<br>"
-               end
-             end
-             @telo = @telo + "<hr>"
-           end
-
-
-
        end
        end
 end
+
 
 end

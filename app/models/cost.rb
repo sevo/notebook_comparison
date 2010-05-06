@@ -11,4 +11,8 @@
 #
 
 class Cost < ActiveRecord::Base
+  belongs_to :notebook
+  belongs_to :store
+  has_many :notebooks, :through => :notebook_stores
+  has_many :stores, :through => :notebook_stores
 end

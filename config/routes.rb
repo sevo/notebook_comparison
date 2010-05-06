@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  # map.resources :euroshop,:controller => :euroshop, :collection => {:graph_code => :get}
+  #map.connect '/euroshop/graph_code?RAM1=:RAM1&RAM2=:RAM2', :controller => :euroshop, :action => :graph_code
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
@@ -40,4 +42,5 @@ ActionController::Routing::Routes.draw do |map|
   # consider removing or commenting them out if you're using named routes and resources.
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
+
 end

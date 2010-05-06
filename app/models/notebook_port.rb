@@ -10,4 +10,6 @@
 #
 
 class NotebookPort < ActiveRecord::Base
+  belongs_to :port
+  belongs_to :notebook
 end

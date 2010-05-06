@@ -8,4 +8,6 @@
 #
 
 class Port < ActiveRecord::Base
+  has_many :notebook_ports, :dependent => :destroy
+  has_many :notebooks, :through => :notebook_ports
 end

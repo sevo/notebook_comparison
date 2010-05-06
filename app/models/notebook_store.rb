@@ -10,4 +10,7 @@
 #
 
 class NotebookStore < ActiveRecord::Base
+  belongs_to :cost
+  belongs_to :notebook
+  belongs_to :store
 end

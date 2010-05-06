@@ -46,4 +46,13 @@
 #
 
 class Notebook < ActiveRecord::Base
+  has_many :costs, :dependent => :destroy
+  has_many :notebook_ports, :dependent => :destroy
+  has_many :notebook_stores, :dependent => :destroy
+  has_many :notebook_card_types, :dependent => :destroy
+  has_many :ports, :through => :notebook_ports
+  has_many :stores, :through => :notebook_stores
+  has_many :card_types, :through => :notebook_card_types
+
+  
 end
