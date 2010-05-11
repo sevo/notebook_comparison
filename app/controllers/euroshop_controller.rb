@@ -4,8 +4,8 @@ class EuroshopController < ApplicationController
     require 'nokogiri'
     require 'date'
 
-  caches_page :index,:stores
-  cache_sweeper :notebook_sweeper
+  #caches_page :index,:stores
+  #cache_sweeper :notebook_sweeper
 
 
   def index
@@ -23,45 +23,7 @@ class EuroshopController < ApplicationController
 
   def compare
 
-    @hlavicka = "<script>
-        window.onload = function ()
-        {
-            var graf = new RGraph.Scatter('graf', [
-                                                        [
-                                                         [0,5, '#FF8000', 'The start of the year'],
-                                                         [45,45, null, 'Middle of February'],
-                                                         [60,51, null, 'Towards the end of February'],
-                                                         [150,12, null, 'The end of May'],
-                                                         [280,23, null, 'The closing quarter'],
-                                                         [305,29, null, 'Winter time sales'],
-                                                         [335,35, null, 'Christmas time boost'],
-                                                         [365,23, null, 'The far end of the year']
-                                                        ],
-
-                                                        [
-                                                         [30,99],
-                                                         [50,52],
-                                                         [300,28]
-                                                        ]
-                                                       ]);
-            graf.Set('chart.xmax', 365);
-            graf.Set('chart.ymax', 3000);
-            graf.Set('chart.gutter', 65);
-            graf.Set('chart.background.barcolor1', 'white');
-            graf.Set('chart.background.barcolor2', 'white');
-            graf.Set('chart.title', 'Porovnanie notebookov');
-            graf.Set('chart.tickmarks', 'circle');
-            graf.Set('chart.ticksize', 8);
-            graf.Set('chart.line.colors', ['#FF8000', '#99FF00']);
-            graf.Set('chart.key', ['Prvé vyhľadávanie', 'Druhé vyhľadávanie']);
-            graf.Set('chart.key.background', 'white');
-            graf.Set('chart.key.shadow', true);
-            graf.Set('chart.key.position', 'gutter');
-	    graf.Set('chart.ylabels', true);
-            graf.Set('chart.title.yaxis', 'Cena');
-            graf.Draw();
-        }
-    </script>"
+    
     @title = "Porovnanie"
     #@graph = open_flash_chart_object(600,300,url_for(params.merge({:controller => :euroshop, :action => :graph_code})))#spusta druhy controller s parametrami ktore dostal tento z formularu
 

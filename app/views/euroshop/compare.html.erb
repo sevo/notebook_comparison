@@ -4,10 +4,11 @@
 
 
 
-    <%= javascript_include_tag '/javascripts/RGraph/RGraph.common.js'%>
-    <%= javascript_include_tag '/javascripts/RGraph/RGraph.common.annotate.js'%>
-    <%= javascript_include_tag '/javascripts/RGraph/RGraph.scatter.js' %>
-<%= @hlavicka%>
+    <%= javascript_include_tag '/javascripts/flot/jquery_002.js' %>
+    <%= javascript_include_tag '/javascripts/flot/jquery.js' %>
+    <%= javascript_include_tag '/javascripts/flot/jquery-1.js' %>
+    <%= javascript_include_tag '/javascripts/flot/timelog.js' %>
+    <%= javascript_include_tag '/javascripts/flot/wi_feedback.js' %>
 
      <title><%= title %></title>
         <%= stylesheet_link_tag 'thingreenline/1', :media => 'screen,projection' %>
@@ -183,7 +184,9 @@
 <%= @google %>
 
 <hr>
-<canvas style="cursor: default;" id="graf" width="600" height="400">[No canvas support]</canvas> 
+
+<div id="graf" style="width: 600px; height: 500px; position: relative;"></div>  <!--umiestnenie grafu-->
+
 <br>
 <div id="form_left" class="round">
 <% @notebooky1.each do |e|   %>
@@ -199,5 +202,74 @@
 <%end%>
 </div>
 
+<script id="source" language="javascript" type="text/javascript">   <!--skript na vytvorenie grafu-->
+
+var p = [];
+$(function () {
+    var sin = [], cos = [];
+
+    for (var i = 0; i < 14; i += 0.5) {
+        sin.push([i, Math.sin(i),i]);
+        cos.push([i, Math.cos(i),i]);
+	p.push([i, Math.sin(i),'huhuuhuh']);
+    }
+
+    var plot = $.plot($("#graf"),
+           [ { data: p, label: "sin(x)"}, { data: cos, label: "cos(x)" }], {
+               series: {
+                   lines: { show: false },
+                   points: { show: true }
+               },
+               grid: { hoverable: true, clickable: true },
+               yaxis: { min: -1.2, max: 1.2 }
+             });
+
+    function showTooltip(x, y, contents) {
+        $('<div id="tooltip">' + contents + '</div>').css( {
+            position: 'absolute',
+            display: 'none',
+            top: y + 5,
+            left: x + 5,
+            border: '1px solid #fdd',
+            padding: '2px',
+            'background-color': '#fee',
+            opacity: 0.80
+        }).appendTo("body").fadeIn(200);
+    }
+
+    var previousPoint = null;
+    $("#graf").bind("plothover", function (event, pos, item) {
+       // $("#x").text(pos.x.toFixed(2));
+        //$("#y").text(pos.y.toFixed(2));
+
+
+            if (item) {
+                if (previousPoint != item.datapoint) {
+                    previousPoint = item.datapoint;
+
+                    $("#tooltip").remove();
+                    var x = item.datapoint[0],
+                        y = item.datapoint[1];
+			z = ''
+			//z = p[1]
+			var pt;
+			for(pt in p){
+				if(p[pt][0]==x && p[pt][1]==y)
+				{
+					z += 'hura '  + p[pt][2]
+				}
+			}
+
+			//z = item.datapoint[2].toFixed(2);
+
+                    showTooltip(item.pageX, item.pageY,
+                                item.series.label + " of " + x + " = " + y +" "+ z);
+				//item.datapoint);
+                }
+
+        }
+    });
+});
+</script>
 
 
