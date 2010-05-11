@@ -205,10 +205,10 @@ require 'date'
                  notebook.processor_freq=value.match("\\d+[,.]?\\d*").to_s.gsub(/[,.]/,'.').to_s.to_f if key=~/Frekvence procesoru/
                  notebook.display_diag=value.match("\\d+[,.]?\\d*").to_s.gsub!(/[,.]/,'.').to_f if key=~/ÃhlopÅÃ­Äka LCD/
                  notebook.display_diag=value.match("\\d+[,.]?\\d*").to_s.gsub!(/[,.]/,'.').to_f if key=~/Úhlopříčka LCD/
-                 notebook.display_resolution_ver=value.match("\\d+x").to_s.delete("x").to_i if key=~/RozliÅ¡enÃ­ LCD/
-                 notebook.display_resolution_hor=value.match("x\\d+").to_s.delete("x").to_i if key=~/RozliÅ¡enÃ­ LCD/
-                 notebook.display_resolution_ver=value.match("\\d+x").to_s.delete("x").to_i if key=~/Rozlišení LCD/
-                 notebook.display_resolution_hor=value.match("x\\d+").to_s.delete("x").to_i if key=~/Rozlišení LCD/
+                 notebook.display_resolution_hor=value.match("\\d+x").to_s.delete("x").to_i if key=~/RozliÅ¡enÃ­ LCD/
+                 notebook.display_resolution_ver=value.match("x\\d+").to_s.delete("x").to_i if key=~/RozliÅ¡enÃ­ LCD/
+                 notebook.display_resolution_hor=value.match("\\d+x").to_s.delete("x").to_i if key=~/Rozlišení LCD/
+                 notebook.display_resolution_ver=value.match("x\\d+").to_s.delete("x").to_i if key=~/Rozlišení LCD/
                  notebook.disc_rotations=value.match("\\d+").to_s.to_i if key=~/OtÃ¡Äky pevnÃ©ho disku/ || key=~/Otáčky pevného disku/
                  notebook.drive=value.match(">.+<").to_s.delete("<>Â") if ((key=~/OptickÃ¡ mechanika/)&&!(value.match(">.+<").to_s.delete("<>Â")=~/bez/))
                  notebook.drive=value.match(">.+<").to_s.delete("<>Â") if ((key=~/Optická mechanika/)&&!(value.match(">.+<").to_s.delete("<>Â")=~/bez/))

@@ -1,8 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="sk" lang="sk">
 <head>
-        <title><%= title %></title>
-        <%= stylesheet_link_tag 'thingreenline/1', :media => 'screen,projection' %>
+
+
+    <%= yield :head %>
+ 
+       
     </head>
     
     <body>
@@ -22,6 +25,7 @@
             <%= sidebar %>
             <div id="content">
               <%= yield %>
+              <br class="clear">
             </div>
         </div>
 

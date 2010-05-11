@@ -22,19 +22,62 @@ class EuroshopController < ApplicationController
   end
 
   def compare
+
+    @hlavicka = "<script>
+        window.onload = function ()
+        {
+            var graf = new RGraph.Scatter('graf', [
+                                                        [
+                                                         [0,5, '#FF8000', 'The start of the year'],
+                                                         [45,45, null, 'Middle of February'],
+                                                         [60,51, null, 'Towards the end of February'],
+                                                         [150,12, null, 'The end of May'],
+                                                         [280,23, null, 'The closing quarter'],
+                                                         [305,29, null, 'Winter time sales'],
+                                                         [335,35, null, 'Christmas time boost'],
+                                                         [365,23, null, 'The far end of the year']
+                                                        ],
+
+                                                        [
+                                                         [30,99],
+                                                         [50,52],
+                                                         [300,28]
+                                                        ]
+                                                       ]);
+            graf.Set('chart.xmax', 365);
+            graf.Set('chart.ymax', 3000);
+            graf.Set('chart.gutter', 65);
+            graf.Set('chart.background.barcolor1', 'white');
+            graf.Set('chart.background.barcolor2', 'white');
+            graf.Set('chart.title', 'Porovnanie notebookov');
+            graf.Set('chart.tickmarks', 'circle');
+            graf.Set('chart.ticksize', 8);
+            graf.Set('chart.line.colors', ['#FF8000', '#99FF00']);
+            graf.Set('chart.key', ['Prvé vyhľadávanie', 'Druhé vyhľadávanie']);
+            graf.Set('chart.key.background', 'white');
+            graf.Set('chart.key.shadow', true);
+            graf.Set('chart.key.position', 'gutter');
+	    graf.Set('chart.ylabels', true);
+            graf.Set('chart.title.yaxis', 'Cena');
+            graf.Draw();
+        }
+    </script>"
     @title = "Porovnanie"
     #@graph = open_flash_chart_object(600,300,url_for(params.merge({:controller => :euroshop, :action => :graph_code})))#spusta druhy controller s parametrami ktore dostal tento z formularu
+
+
+
     counter = 0
 
-    notebooky1 = Notebook.find :all, :conditions => {'memory_capacity' => params[:RAM1]}
-    notebooky2 = Notebook.find :all, :conditions => {'memory_capacity' => params[:RAM2]}
+    @notebooky1 = Notebook.find :all, :conditions => {'memory_capacity' => params[:RAM1]}
+    @notebooky2 = Notebook.find :all, :conditions => {'memory_capacity' => params[:RAM2]}
     ceny = ""
     poradie = ""
 
 
-    unless ((notebooky1==nil)||(params[:RAM1]==nil)) then
+    unless ((@notebooky1==nil)||(params[:RAM1]==nil)) then
 
-      notebooky1.each do |e|
+      @notebooky1.each do |e|
         cena = NotebookStore.all(
           :select => "
             AVG(costs.cost_wdph) as avg",
@@ -50,9 +93,9 @@ class EuroshopController < ApplicationController
       end
     end
 
-    unless ((notebooky2==nil)||(params[:RAM2]==nil)) then
+    unless ((@notebooky2==nil)||(params[:RAM2]==nil)) then
 
-      notebooky2.each do |e|
+      @notebooky2.each do |e|
         cena = NotebookStore.all(
           :select => "
             AVG(costs.cost_wdph) as avg",
@@ -76,10 +119,10 @@ chs=600x500
 &cht=s
 &chxt=x
 &chxr=0,0,2500,500
-&chm=o,99ff00,1,,100.0|o,669900,1,0:#{notebooky1.length}:1,10.0
+&chm=o,99ff00,1,,100.0|o,FF8000,1,0:#{@notebooky1.length}:1,10.0
 ' width = '600' height = '500' alt = 'graf'>"
   end
-
+                                                    
   
 
   def graph_code
@@ -89,44 +132,43 @@ chs=600x500
 
     title = Title.new("Porovnanie notebookov")
 
-    notebooky1 = Notebook.find :all, :conditions => {'memory_capacity' => params[:RAM1]}
-    notebooky2 = Notebook.find :all, :conditions => {'memory_capacity' => params[:RAM2]}
+    #notebooky1 = Notebook.find :all, :conditions => {'memory_capacity' => params[:RAM1]}
+    #notebooky2 = Notebook.find :all, :conditions => {'memory_capacity' => params[:RAM2]}
     #title = Title.new(notebooky1.length.to_s)
 
-    chart.set_title(title)
+        chart.set_title(title)
+
+        scatter = Scatter.new('#FFD800', 10)  # color, dot size
 
 
-    scatter.set_tooltip(t)
 
-    scatter.values = [
-      ScatterValue.new(50,30),
-      ScatterValue.new(305,400),
-      ScatterValue.new(61,500),  # x, y, dot size
-      ScatterValue.new(600,550),
-      ScatterValue.new(459,300),
-      ScatterValue.new(180,789)
-    ]
+        scatter.values = [
+          ScatterValue.new(50,30),
+          ScatterValue.new(305,400),
+          ScatterValue.new(61,500,15),  # x, y, dot size
+          ScatterValue.new(600,550),
+          ScatterValue.new(459,300),
+          ScatterValue.new(180,789)
+        ]
 
-    chart.add_element(scatter)
+        chart.add_element(scatter)
 
-    x = XAxis.new
-    x.set_range(0, 650,100)  #min, max, steps
-    # alternatively, you can use x.set_range(0,65000) and x.set_step(10000)
-    x.colour = '#00FF00'
+        x = XAxis.new
+        x.set_range(0, 650, 100)  #min, max, steps
+        # alternatively, you can use x.set_range(0,65000) and x.set_step(10000)
+        x.colour = '#00FF00'
+        # have to set the x axis labels because of scatter bug here - http://sourceforge.net/forum/message.php?msg_id=4812326
+        x.set_grid_colour('#00F0FF')
+        chart.set_x_axis(x)
 
-    # have to set the x axis labels because of scatter bug here - http://sourceforge.net/forum/message.php?msg_id=4812326
-    x.set_grid_colour('#00F0FF')
-    chart.set_x_axis(x)
+        y = YAxis.new
+        y.set_range(0,800,200)
+        y.colour = '#FF0000'
+        y.set_grid_colour('#FF00FF')
+        chart.set_y_axis(y)
 
-    y = YAxis.new
-    y.set_range(0,800,200)
-    y.colour = '#FF0000'
-    y.set_grid_colour('#FF00FF')
-    chart.set_y_axis(y)
-    chart.set_tooltip(t)
-    
+        render :text => chart.to_s
 
-    render :text => chart.to_s
 
 
 
@@ -186,6 +228,7 @@ chs=600x500
     
 
   end
+
 
 
 end

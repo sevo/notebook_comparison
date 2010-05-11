@@ -29,6 +29,8 @@ body {
 margin:0 auto 0 auto;
 float: left;
 padding:20px 20px 10px 10px;
+width: 45%;
+border-style: solid; border-color: #FF8000; border-width: 2px;
 
 }
 
@@ -36,7 +38,9 @@ padding:20px 20px 10px 10px;
 /*width:100%;*/
 margin:0 auto 0 auto;
 float: right;
+width: 45%;
 padding:20px 20px 10px 10px;
+border-style: solid; border-color: #99ff00; border-width: 2px;
 }
 
 #header {
@@ -267,4 +271,9 @@ a:hover {
 }
 #footer a {
 	color:#999;
+}
+
+.round {
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
 }

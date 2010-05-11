@@ -1,5 +1,21 @@
+<% content_for :head do %>
+<meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='chrome=1'>
+
+
+
+    <%= javascript_include_tag '/javascripts/RGraph/RGraph.common.js'%>
+    <%= javascript_include_tag '/javascripts/RGraph/RGraph.common.annotate.js'%>
+    <%= javascript_include_tag '/javascripts/RGraph/RGraph.scatter.js' %>
+<%= @hlavicka%>
+
+     <title><%= title %></title>
+        <%= stylesheet_link_tag 'thingreenline/1', :media => 'screen,projection' %>
+<% end %>
+
+
 <% form_tag(:action => "compare", :method => "get") do %>
- <div id="form_left">
+ <div id="form_left" class="round">
 
     <%= label_tag(:name1, "Názov:") %>
     <%= text_field_tag :name1, params[:name1] %><br>
@@ -36,23 +52,48 @@
     <%= label_tag(:webcam1, "nie ") %> <%= radio_button :webcam1, params[:webcam1], false %><br>
 
     <%= label_tag(:wifi1, "Wifi:") %>
-    <%= label_tag(:wifi1, "áno ") %> <%= radio_button :wifi1, params[:wifi1], true %>
-    <%= label_tag(:wifi1, "nie ") %> <%= radio_button :wifi1, params[:wifi1], false %><br>
+    <%= radio_button :wifi1, params[:wifi1], true %> áno
+    <%= radio_button :wifi1, params[:wifi1], false %>nie<br>
 
     <%= label_tag(:bluetooth1, "Bluetooth:  ") %>
-    <%= label_tag(:bluetooth1, "áno ") %> <%= radio_button :bluetooth1, params[:bluetooth1], true %>
-    <%= label_tag(:bluetooth1, "nie ") %> <%= radio_button :bluetooth1, params[:bluetooth1], false %><br>
+    <%= radio_button :bluetooth1, params[:bluetooth1], true %>áno
+    <%= radio_button :bluetooth1, params[:bluetooth1], false %>nie<br>
 
     <%= label_tag(:network1, "Sieťová karta:") %>
     <%= text_field_tag :network1, params[:network1] %><br>
 
     <%= label_tag(:numeric_keyboard1, "Numerická klávesnica:  ") %>
-    <%= label_tag(:numeric_keyboard1, "áno ") %> <%= radio_button :numeric_keyboard1, params[:numeric_keyboard1], true %>
-    <%= label_tag(:numeric_keyboard1, "nie ") %> <%= radio_button :numeric_keyboard1, params[:numeric_keyboard1], false %><br>
+    <%= radio_button :numeric_keyboard1, params[:numeric_keyboard1], true %>áno
+    <%= radio_button :numeric_keyboard1, params[:numeric_keyboard1], false %>nie<br>
+
+    <%= label_tag(:weight1, "Hmotnosť:") %>
+    <%= text_field_tag :weight1, params[:weight1], :size => 10 %><br>
+
+    <%= label_tag(:drive1, "Mechanika:") %>
+    <%= text_field_tag :drive1, params[:drive1] %><br>
+
+    <%= label_tag(:grafic_card1, "Grafická karta:") %>
+    <%= text_field_tag :grafic_card1, params[:grafic_card1] %><br>
+
+    <%= label_tag(:batery_life_time1, "Životnosť batérie:") %>
+    <%= text_field_tag :batery_life_time1, params[:batery_life_time1] %><br>
+
+    <%= label_tag(:card_reader1, "Čítačka kariet:  ") %>
+    <%= radio_button :card_reader1, params[:card_reader1], true %>áno
+    <%= radio_button :card_reader1, params[:card_reader1], false %>nie<br>
+
+    <%= label_tag(:OS1, "Operačný systém:") %>
+    <%= text_field_tag :OS1, params[:OS1] %><br>
+
+    <%= label_tag(:monitor_out1, "Výstup na monitor:") %>
+    <%= text_field_tag :monitor_out1, params[:monitor_out1] %><br>
+
+    <%= label_tag(:USB_number1, "Počet USB:") %>
+    <%= text_field_tag :USB_number1, params[:USB_number1] %><br>
 
  </div>
 
- <div id="form_right">
+ <div id="form_right" class="round">
     <%= label_tag(:name2, "Názov:") %>
     <%= text_field_tag :name2, params[:name2] %><br>
    
@@ -84,23 +125,48 @@
     <%= text_field_tag :disc_rotations2, params[:disc_rotations2], :size => 10 %><br>
 
     <%= label_tag(:webcam2, "Webkamera:  ") %>
-    <%= label_tag(:webcam2, "áno ") %> <%= radio_button :webcam2, params[:webcam2], true %>
-    <%= label_tag(:webcam2, "nie ") %> <%= radio_button :webcam2, params[:webcam2], false %><br>
+    <%= radio_button :webcam2, params[:webcam2], true %>áno
+    <%= radio_button :webcam2, params[:webcam2], false %>nie<br>
 
     <%= label_tag(:wifi2, "Wifi:") %>
-    <%= label_tag(:wifi2, "áno ") %> <%= radio_button :wifi2, params[:wifi2], true %>
-    <%= label_tag(:wifi2, "nie ") %> <%= radio_button :wifi2, params[:wifi2], false %><br>
+    <%= radio_button :wifi2, params[:wifi2], true %>áno
+    <%= radio_button :wifi2, params[:wifi2], false %>nie<br>
 
     <%= label_tag(:bluetooth2, "Bluetooth:  ") %>
-    <%= label_tag(:bluetooth2, "áno ") %> <%= radio_button :bluetooth2, params[:bluetooth2], true %>
-    <%= label_tag(:bluetooth2, "nie ") %> <%= radio_button :bluetooth2, params[:bluetooth2], false %><br>
+    <%= radio_button :bluetooth2, params[:bluetooth2], true %>áno
+    <%= radio_button :bluetooth2, params[:bluetooth2], false %>nie<br>
 
     <%= label_tag(:network2, "Sieťová karta:") %>
     <%= text_field_tag :network2, params[:network2] %><br>
 
     <%= label_tag(:numeric_keyboard2, "Numerická klávesnica:  ") %>
-    <%= label_tag(:numeric_keyboard2, "áno ") %> <%= radio_button :numeric_keyboard2, params[:numeric_keyboard2], true %>
-    <%= label_tag(:numeric_keyboard2, "nie ") %> <%= radio_button :numeric_keyboard2, params[:numeric_keyboard2], false %><br>
+    <%= radio_button :numeric_keyboard2, params[:numeric_keyboard2], true %>áno
+    <%= radio_button :numeric_keyboard2, params[:numeric_keyboard2], false %>nie<br>
+
+    <%= label_tag(:weight2, "Hmotnosť:") %>
+    <%= text_field_tag :weight2, params[:weight2], :size => 10 %><br>
+
+    <%= label_tag(:drive2, "Mechanika:") %>
+    <%= text_field_tag :drive2, params[:drive2] %><br>
+
+    <%= label_tag(:grafic_card2, "Grafická karta:") %>
+    <%= text_field_tag :grafic_card2, params[:grafic_card2] %><br>
+
+    <%= label_tag(:batery_life_time2, "Životnosť batérie:") %>
+    <%= text_field_tag :batery_life_time2, params[:batery_life_time2] %><br>
+
+    <%= label_tag(:card_reader2, "Čítačka kariet:  ") %>
+    <%= radio_button :card_reader2, params[:card_reader2], true %>áno
+    <%= radio_button :card_reader2, params[:card_reader2], false %>nie<br>
+
+    <%= label_tag(:OS2, "Operačný systém:") %>
+    <%= text_field_tag :OS2, params[:OS2] %><br>
+
+    <%= label_tag(:monitor_out2, "Výstup na monitor:") %>
+    <%= text_field_tag :monitor_out2, params[:monitor_out2] %><br>
+
+    <%= label_tag(:USB_number2, "Počet USB:") %>
+    <%= text_field_tag :USB_number2, params[:USB_number2] %><br>
 
    
  </div>
@@ -111,10 +177,27 @@
     
 <% end %>
 <!--<script type="text/javascript" src="/javascripts/swfobject.js"></script>
-<%= @graph %>-->
-<span style="color: #669900; font-size: 20px">&#9679;</span>Prvé vyhľadávanie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<%= @graph %> -->
+<span style="color: #FF8000; font-size: 20px">&#9679;</span>Prvé vyhľadávanie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <span style="color: #99ff00; font-size: 20px">&#9679;</span>Druhé vyhľadávanie
 <%= @google %>
 
 <hr>
+<canvas style="cursor: default;" id="graf" width="600" height="400">[No canvas support]</canvas> 
+<br>
+<div id="form_left" class="round">
+<% @notebooky1.each do |e|   %>
+   hohoh
+
+<%end%>
+</div>
+
+<div id="form_right" class="round">
+<% @notebooky2.each do |e|   %>
+   hohoh
+
+<%end%>
+</div>
+
+
 
