@@ -54,5 +54,18 @@ class Notebook < ActiveRecord::Base
   has_many :stores, :through => :notebook_stores
   has_many :card_types, :through => :notebook_card_types
 
-  
+  def popis
+    text =""
+    text += name if name != nil
+    text += "/ " + processor_freq.to_s+" GHz" if processor_freq != nil
+    text += "/ " + display_diag.to_s+'"' if display_diag != nil
+    text += "/ " + memory_capacity.to_s+"GB" if memory_capacity != nil
+    text += "/ " + disc_capacity.to_s+"GB" if disc_capacity != nil
+    text += "/ webcam" if webcam == true
+    text += "/ bt" if bluetooth == true
+    text += "/ wifi" if wifi == true
+    text += "/ " + network if network != nil
+    text += "/ " + drive if drive != nil
+    text
+  end
 end

@@ -2,27 +2,15 @@
 <project version="4">
   <component name="ChangeListManager" verified="true">
     <list default="true" readonly="true" id="e698d14f-348a-4f9c-955c-aaf96fccc380" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/RGraph/RGraph.funnel.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/RGraph/RGraph.bar.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/RGraph/RGraph.bipolar.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/RGraph/RGraph.meter.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/RGraph/RGraph.led.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/RGraph/RGraph.scatter.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/RGraph/RGraph.modaldialog.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/RGraph/RGraph.pie.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/euroshop/index.html" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/notebook.rb" afterPath="$PROJECT_DIR$/app/models/notebook.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/euroshop_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/euroshop_controller.rb" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/RGraph/RGraph.donut.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/euroshop/compare.html.erb" afterPath="$PROJECT_DIR$/app/views/euroshop/compare.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/RGraph/RGraph.line.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/RGraph/RGraph.radar.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/RGraph/RGraph.gantt.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/RGraph/RGraph.odo.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/RGraph/RGraph.progress.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/RGraph/RGraph.tradar.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/development.log" afterPath="$PROJECT_DIR$/log/development.log" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/RGraph/RGraph.common.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/javascripts/RGraph/RGraph.hbar.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/stylesheets/thingreenline/1.css" afterPath="$PROJECT_DIR$/public/stylesheets/thingreenline/1.css" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/euroshop/stores.html" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/views/euroshop/detail.html.erb" />
     </list>
     <ignored path=".idea/workspace.xml" />
     <ignored path="WA.iws" />
@@ -49,7 +37,7 @@
       <file leaf-file-name="compare.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/euroshop/compare.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="270" column="7" selection-start="9954" selection-end="9954" vertical-scroll-proportion="5.8074245">
+            <state line="305" column="39" selection-start="11396" selection-end="11396" vertical-scroll-proportion="0.746114">
               <folding />
             </state>
           </provider>
@@ -58,7 +46,7 @@
       <file leaf-file-name="index.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/euroshop/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="83" selection-start="142" selection-end="142" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="152" vertical-scroll-proportion="-0.0">
               <folding />
             </state>
           </provider>
@@ -85,7 +73,25 @@
       <file leaf-file-name="euroshop_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/euroshop_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="4" selection-start="521" selection-end="521" vertical-scroll-proportion="0.0">
+            <state line="14" column="2" selection-start="403" selection-end="403" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="detail.html.erb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/euroshop/detail.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="16" selection-start="170" selection-end="170" vertical-scroll-proportion="-3.3333333">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="notebook.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/notebook.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="68" column="0" selection-start="2635" selection-end="2635" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -103,7 +109,7 @@
       <file leaf-file-name="euroshop.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/euroshop.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="0" selection-start="198" selection-end="198" vertical-scroll-proportion="0.0">
+            <state line="17" column="20" selection-start="416" selection-end="447" vertical-scroll-proportion="-8.0">
               <folding />
             </state>
           </provider>
@@ -132,8 +138,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/models/notebook_sweeper_observer.rb" />
-        <option value="$PROJECT_DIR$/app/models/notebook.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/lib/scatter_value.rb" />
         <option value="$PROJECT_DIR$/app/models/store_sweeper.rb" />
@@ -146,7 +150,9 @@
         <option value="$PROJECT_DIR$/app/views/layouts/euroshop.html.erb" />
         <option value="$PROJECT_DIR$/app/views/euroshop/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/euroshop/stores.html.erb" />
+        <option value="$PROJECT_DIR$/app/models/notebook.rb" />
         <option value="$PROJECT_DIR$/app/controllers/euroshop_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/euroshop/detail.html.erb" />
         <option value="$PROJECT_DIR$/app/views/euroshop/compare.html.erb" />
       </list>
     </option>
@@ -184,6 +190,35 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Favorites" />
+      <pane id="RailsProjectView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WA" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WA" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WA" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WA" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controllers" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.ControllersFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="Scope">
         <subPane subId="Problems" />
       </pane>
@@ -425,35 +460,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Favorites" />
-      <pane id="RailsProjectView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WA" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WA" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WA" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WA" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controllers" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.ControllersFolderNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -751,17 +757,37 @@
     <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
     <supportedVersion>125</supportedVersion>
   </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1280" height="750" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3280507" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296355" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2438247" sideWeight="0.33755943" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2438247" sideWeight="0.78446907" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2438247" sideWeight="0.7638669" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2044374" sideWeight="0.0" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22503962" sideWeight="0.0" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3296355" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -831,23 +857,9 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/notebook.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="2" selection-start="2103" selection-end="2103" vertical-scroll-proportion="0.75166297" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/euroshop/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="83" selection-start="142" selection-end="142" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/euroshop/stores.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="83" selection-start="142" selection-end="142" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="2" column="83" selection-start="142" selection-end="142" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/tasks/parse.rb">
@@ -860,28 +872,49 @@
         <state line="12" column="47" selection-start="220" selection-end="220" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/euroshop.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="198" selection-end="198" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/helpers/application_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/notebook.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="0" selection-start="2635" selection-end="2635" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/euroshop_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="4" selection-start="521" selection-end="521" vertical-scroll-proportion="0.0">
+        <state line="14" column="2" selection-start="403" selection-end="403" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/euroshop/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="152" vertical-scroll-proportion="-0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/euroshop.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="20" selection-start="416" selection-end="447" vertical-scroll-proportion="-8.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/euroshop/detail.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="16" selection-start="170" selection-end="170" vertical-scroll-proportion="-3.3333333">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/euroshop/compare.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="270" column="7" selection-start="9954" selection-end="9954" vertical-scroll-proportion="5.8074245">
+        <state line="305" column="39" selection-start="11396" selection-end="11396" vertical-scroll-proportion="0.746114">
           <folding />
         </state>
       </provider>

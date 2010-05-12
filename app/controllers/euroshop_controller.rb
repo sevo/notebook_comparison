@@ -12,8 +12,6 @@ class EuroshopController < ApplicationController
     @title = "Úvodná stránka"
     @pocet_notebookov =   Notebook.count_by_sql "SELECT COUNT(*) FROM notebooks"
     @pocet_obchodov =   Store.count_by_sql "SELECT COUNT(*) FROM stores"
-    @sidebar = ""
-
   end
 
   def stores
@@ -21,23 +19,70 @@ class EuroshopController < ApplicationController
     @obchody = Store.find(:all)
   end
 
+  def detail
+     @title = "Detail notebooku"
+  end
+
   def compare
 
-    
     @title = "Porovnanie"
     #@graph = open_flash_chart_object(600,300,url_for(params.merge({:controller => :euroshop, :action => :graph_code})))#spusta druhy controller s parametrami ktore dostal tento z formularu
-
-
 
     counter = 0
 
     @notebooky1 = Notebook.find :all, :conditions => {'memory_capacity' => params[:RAM1]}
     @notebooky2 = Notebook.find :all, :conditions => {'memory_capacity' => params[:RAM2]}
+
+
+    @data1 = []
+    unless @notebooky1==nil then
+      @notebooky1.each do |e|
+        cena = NotebookStore.all(
+          :select => "
+            AVG(costs.cost_wdph) as avg",
+          :joins => :cost,
+          :conditions => {'notebook_stores.notebook_id' => e.id} )
+
+
+        cenaN = cena.first.avg.to_s.to_i
+        poradieN = (counter.to_s.to_i+rand(99)).modulo(100).to_s
+        counter += 1
+        popis = e.popis
+
+        @data1 << [poradieN, cenaN, popis, e.code]
+      end
+
+
+    end
+
+    @data2 = []
+    unless @notebooky2==nil then
+       @notebooky2.each do |e|
+        cena = NotebookStore.all(
+          :select => "
+            AVG(costs.cost_wdph) as avg",
+          :joins => :cost,
+          :conditions => {'notebook_stores.notebook_id' => e.id} )
+
+
+        cenaN = cena.first.avg.to_s.to_i
+        poradieN = (counter.to_s.to_i+rand(99)).modulo(100).to_s
+        counter += 1
+
+        counter += 1
+        popis = e.popis
+
+        @data2 << [poradieN, cenaN, popis, e.code]
+      end
+
+
+    end
+
     ceny = ""
     poradie = ""
+    counter = 0
+    unless @notebooky1==nil then
 
-
-    unless ((@notebooky1==nil)||(params[:RAM1]==nil)) then
 
       @notebooky1.each do |e|
         cena = NotebookStore.all(
@@ -55,7 +100,7 @@ class EuroshopController < ApplicationController
       end
     end
 
-    unless ((@notebooky2==nil)||(params[:RAM2]==nil)) then
+    unless @notebooky2==nil then
 
       @notebooky2.each do |e|
         cena = NotebookStore.all(

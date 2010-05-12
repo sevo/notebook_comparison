@@ -34,6 +34,8 @@ border-style: solid; border-color: #FF8000; border-width: 2px;
 
 }
 
+
+
 #form_right{
 /*width:100%;*/
 margin:0 auto 0 auto;
@@ -152,7 +154,7 @@ border-style: solid; border-color: #99ff00; border-width: 2px;
 }
 #content li {
 	margin:10px 0 10px 0;
-	padding:0 0 10px 15px;
+	padding:0 0 0px 15px;
 	list-style:none;
 	border-bottom:1px solid #eee;
 	background-image:url(../../images/thingreenline/li.gif);
@@ -271,6 +273,10 @@ a:hover {
 }
 #footer a {
 	color:#999;
+}
+
+#form_left li a{
+color: #FF8000;	
 }
 
 .round {

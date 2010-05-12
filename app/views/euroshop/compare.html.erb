@@ -189,15 +189,15 @@
 
 <br>
 <div id="form_left" class="round">
-<% @notebooky1.each do |e|   %>
-   hohoh
+<% @data1.each do |e|   %>
+   <li><%= link_to e[2]+", Cena: "+e[1].to_s+"€", 'detail' %> <br></li>
 
 <%end%>
 </div>
 
 <div id="form_right" class="round">
-<% @notebooky2.each do |e|   %>
-   hohoh
+<% @data2.each do |e|   %>
+   <li><%= link_to e[2]+", Cena: "+e[1].to_s+"€", {:controller=>:euroshop, :action => :detail}, :code  => "ggfgfgfggfgf"  %> <br></li>
 
 <%end%>
 </div>
@@ -207,21 +207,30 @@
 var p = [];
 $(function () {
     var sin = [], cos = [];
+    var data1 = [], data2 = [];
+    
+    <% @data1.each do |e| %>
+    data1.push (<%= array_or_string_for_javascript(e) %>)
+    <% end %>
+    <% @data2.each do |e| %>
+    data2.push (<%= array_or_string_for_javascript(e) %>)
+    <% end %>
+
 
     for (var i = 0; i < 14; i += 0.5) {
-        sin.push([i, Math.sin(i),i]);
         cos.push([i, Math.cos(i),i]);
-	p.push([i, Math.sin(i),'huhuuhuh']);
+	p.push([i, Math.sin(i),data1[0][0]]);
     }
 
     var plot = $.plot($("#graf"),
-           [ { data: p, label: "sin(x)"}, { data: cos, label: "cos(x)" }], {
+           [ { data: data1, color: '#FF8000', label: "Prvé vyhľadávanie"}, { data: data2, color: '#99ff00', label: "Druhé vyhľadávanie" }], {
                series: {
                    lines: { show: false },
                    points: { show: true }
                },
                grid: { hoverable: true, clickable: true },
-               yaxis: { min: -1.2, max: 1.2 }
+               yaxis: { min: 0, max: 2500 },
+               xaxis: { min: -1, max: 100, ticks: []}
              });
 
     function showTooltip(x, y, contents) {
@@ -238,37 +247,69 @@ $(function () {
     }
 
     var previousPoint = null;
-    $("#graf").bind("plothover", function (event, pos, item) {
-       // $("#x").text(pos.x.toFixed(2));
-        //$("#y").text(pos.y.toFixed(2));
+    $("#graf").bind("plothover", function (event, pos, item)
+    {
+        if (item)
+        {
+            if (previousPoint != item.datapoint)
+            {
+                previousPoint = item.datapoint;
 
-
-            if (item) {
-                if (previousPoint != item.datapoint) {
-                    previousPoint = item.datapoint;
-
-                    $("#tooltip").remove();
-                    var x = item.datapoint[0],
-                        y = item.datapoint[1];
-			z = ''
-			//z = p[1]
-			var pt;
-			for(pt in p){
-				if(p[pt][0]==x && p[pt][1]==y)
-				{
-					z += 'hura '  + p[pt][2]
-				}
-			}
-
-			//z = item.datapoint[2].toFixed(2);
-
-                    showTooltip(item.pageX, item.pageY,
-                                item.series.label + " of " + x + " = " + y +" "+ z);
-				//item.datapoint);
+                $("#tooltip").remove();
+                var x = item.datapoint[0],
+                    y = item.datapoint[1];
+                    z = ''
+                var pt;
+                for(pt in data1)
+                {
+                    if(data1[pt][0]==x && data1[pt][1]==y)
+                    {
+                        z = data1[pt][2]
+                    }
                 }
+
+                for(pt in data2)
+                {
+                    if(data2[pt][0]==x && data2[pt][1]==y)
+                    {
+                        z = data2[pt][2]
+                    }
+                }
+
+                showTooltip(item.pageX, item.pageY,
+                            "Priemerná cena: " + y +"€"+ ", " + z);
+            }
 
         }
     });
+
+    $("#graf").bind("plotclick", function (event, pos, item) {
+        if (item) {
+            //$("#clickdata").text("You clicked point " + item.dataIndex + " in " + item.series.label + ".");
+            //plot.highlight(item.series, item.datapoint);
+            var x = item.datapoint[0],
+                    y = item.datapoint[1];
+                    z = ''
+                var pt;
+                for(pt in data1)
+                {
+                    if(data1[pt][0]==x && data1[pt][1]==y)
+                    {
+                        z = data1[pt][3]
+                    }
+                }
+
+                for(pt in data2)
+                {
+                    if(data2[pt][0]==x && data2[pt][1]==y)
+                    {
+                        z = data2[pt][3]
+                    }
+                }
+            window.location= 'detail?code='+z;
+        }
+    });
+
 });
 </script>
 
