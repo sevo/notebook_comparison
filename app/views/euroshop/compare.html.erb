@@ -177,36 +177,30 @@
  </div>
     
 <% end %>
-<!--<script type="text/javascript" src="/javascripts/swfobject.js"></script>
-<%= @graph %> -->
-<span style="color: #FF8000; font-size: 20px">&#9679;</span>Prvé vyhľadávanie&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<span style="color: #99ff00; font-size: 20px">&#9679;</span>Druhé vyhľadávanie
-<%= @google %>
 
-<hr>
-
-<div id="graf" style="width: 600px; height: 500px; position: relative;"></div>  <!--umiestnenie grafu-->
+<% unless @data1 == []%>
+<div id="graf" style="width: 700px; height: 500px; position: relative;"></div>
 
 <br>
+
 <div id="form_left" class="round">
 <% @data1.each do |e|   %>
-   <li><%= link_to e[2]+", Cena: "+e[1].to_s+"€", 'detail' %> <br></li>
+   <li><%= link_to e[2]+", Cena: "+e[1].to_s+"€", detail_path(:code => e[3]) %> <br></li>
 
 <%end%>
 </div>
 
 <div id="form_right" class="round">
 <% @data2.each do |e|   %>
-   <li><%= link_to e[2]+", Cena: "+e[1].to_s+"€", {:controller=>:euroshop, :action => :detail}, :code  => "ggfgfgfggfgf"  %> <br></li>
+   <li><%= link_to e[2]+", Cena: "+e[1].to_s+"€", detail_path(:code => e[3])  %> <br></li>
 
 <%end%>
 </div>
-
-<script id="source" language="javascript" type="text/javascript">   <!--skript na vytvorenie grafu-->
+<% end %>
+<script id="source" language="javascript" type="text/javascript">   
 
 var p = [];
 $(function () {
-    var sin = [], cos = [];
     var data1 = [], data2 = [];
     
     <% @data1.each do |e| %>
@@ -216,11 +210,6 @@ $(function () {
     data2.push (<%= array_or_string_for_javascript(e) %>)
     <% end %>
 
-
-    for (var i = 0; i < 14; i += 0.5) {
-        cos.push([i, Math.cos(i),i]);
-	p.push([i, Math.sin(i),data1[0][0]]);
-    }
 
     var plot = $.plot($("#graf"),
            [ { data: data1, color: '#FF8000', label: "Prvé vyhľadávanie"}, { data: data2, color: '#99ff00', label: "Druhé vyhľadávanie" }], {
@@ -265,14 +254,18 @@ $(function () {
                     if(data1[pt][0]==x && data1[pt][1]==y)
                     {
                         z = data1[pt][2]
+                        break
                     }
                 }
-
-                for(pt in data2)
+                if (z == '') 
                 {
-                    if(data2[pt][0]==x && data2[pt][1]==y)
+                    for(pt in data2)
                     {
-                        z = data2[pt][2]
+                        if(data2[pt][0]==x && data2[pt][1]==y)
+                        {
+                            z = data2[pt][2]
+                            break
+                        }
                     }
                 }
 
@@ -303,7 +296,7 @@ $(function () {
                 {
                     if(data2[pt][0]==x && data2[pt][1]==y)
                     {
-                        z = data2[pt][3]
+                        z = data2[pt][3 ]
                     }
                 }
             window.location= 'detail?code='+z;

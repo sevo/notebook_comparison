@@ -62,7 +62,7 @@ class Notebook < ActiveRecord::Base
     text += "/ " + memory_capacity.to_s+"GB" if memory_capacity != nil
     text += "/ " + disc_capacity.to_s+"GB" if disc_capacity != nil
     text += "/ webcam" if webcam == true
-    text += "/ bt" if bluetooth == true
+    text += "/ bluetooth" if bluetooth == true
     text += "/ wifi" if wifi == true
     text += "/ " + network if network != nil
     text += "/ " + drive if drive != nil

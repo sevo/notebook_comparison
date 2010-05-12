@@ -1,6 +1,105 @@
 <% content_for :head do %>
-    <title><%= title %></title>
+<meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='chrome=1'>
+
+    <%= javascript_include_tag '/javascripts/flot/jquery_002.js' %>
+    <%= javascript_include_tag '/javascripts/flot/jquery.js' %>
+    <%= javascript_include_tag '/javascripts/flot/jquery-1.js' %>
+    <%= javascript_include_tag '/javascripts/flot/timelog.js' %>
+    <%= javascript_include_tag '/javascripts/flot/wi_feedback.js' %>
+
+     <title><%= title %></title>
         <%= stylesheet_link_tag 'thingreenline/1', :media => 'screen,projection' %>
 <% end %>
 
-<%= params[:code] %>
+
+<div id="graf" style="width: 700px; height: 500px; position: relative;"></div> 
+
+
+
+
+
+<script id="source" language="javascript" type="text/javascript">
+
+var p = [];
+$(function () {
+    var data = []
+
+
+    <% @data.each do |e| %>
+        pom = []
+        <% unless e == nil then e.each do |e| %>
+        pom.push (<%= array_or_string_for_javascript(e) %>)
+        <% end end%>
+    data.push(pom)
+    <% end %>
+
+    var plot = $.plot($("#graf"),
+           [
+               { data: data[1], color: 'red', label: 'euroshop'},
+               { data: data[3], color: 'purple', label: "shm"},
+               { data: data[4], color: 'fuchsia', label: "x-computers"},
+               { data: data[5], color: 'green', label: "comtec"},
+               { data: data[6], color: 'lime', label: "ASSI computer"},
+               { data: data[7], color: '#9F0706', label: "mirocomputers"},
+               { data: data[8], color: 'yellow', label: "witto"},
+               { data: data[9], color: 'navy', label: "jkc"},
+               { data: data[10], color: 'aqua', label: "sattva"},
+               { data: data[11], color: 'black', label: "mobilpc"},
+               { data: data[12], color: 'silver', label: "eshop4you"},
+               { data: data[13], color: '#FF8000', label: "pc-cennik"}                   
+           ], {
+               series: {
+                   lines: { show: true, lineWidth: 3 },
+                   points: { show: true }
+               },
+               grid: { hoverable: true, clickable: false },
+               yaxis: {minTickSize: 100},
+               xaxis: {
+                        mode: "time"
+                    }
+
+             });
+
+    function showTooltip(x, y, contents) {
+        $('<div id="tooltip">' + contents + '</div>').css( {
+            position: 'absolute',
+            display: 'none',
+            top: y + 5,
+            left: x + 5,
+            border: '1px solid #fdd',
+            padding: '2px',
+            'background-color': '#fee',
+            opacity: 0.80
+        }).appendTo("body").fadeIn(200);
+    }
+
+    var previousPoint = null;
+    $("#graf").bind("plothover", function (event, pos, item)
+    {
+        if (item)
+        {
+            if (previousPoint != item.datapoint)
+            {
+                previousPoint = item.datapoint;
+
+                $("#tooltip").remove();
+                var x = item.datapoint[0],
+                    y = item.datapoint[1];
+                var date,day,month,year;
+                //date = x.getTime().getDate();
+                date = new Date(x)
+                day = date.getDate()
+                month = date.getMonth()
+                year = date.getFullYear()
+
+         
+                showTooltip(item.pageX, item.pageY,
+                            "Cena: " + y +"€, "+ "Dátum: " + day+"/"+month+"/"+year);
+            }
+
+        }
+    });
+
+});
+</script>
