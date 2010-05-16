@@ -61,23 +61,28 @@
     <%= radio_button_tag(:bluetooth1, false) %>nie<br>
 
     <%= label_tag(:network1, "Sieťová karta:") %>
-    <%= text_field_tag :network1, params[:network1] %><br>
+    <%= select(nil, :network1, Notebook.all(:select => "DISTINCT(network)", :order => 'network', :conditions => ['network != ?',""]).collect{|p| [p.network,p.network]}, { :include_blank => true} )%>
+    <br>
 
     <%= label_tag(:numeric_keyboard1, "Numerická klávesnica:  ") %>
     <%= radio_button_tag(:numeric_keyboard1, true) %>áno
     <%= radio_button_tag(:numeric_keyboard1, false) %>nie<br>
 
     <%= label_tag(:weight1, "Hmotnosť:") %>
-    <%= text_field_tag :weight1, params[:weight1], :size => 10 %><br>
+    <%= select(nil, :weight1, Notebook.all(:select => "DISTINCT(weight)", :order => 'weight', :conditions => ['weight != ?',""]).collect{|p| [p.weight,p.weight]}, { :include_blank => true} )%>
+    <br>
 
     <%= label_tag(:drive1, "Mechanika:") %>
-    <%= text_field_tag :drive1, params[:drive1] %><br>
+    <%= select(nil, :drive1, Notebook.all(:select => "DISTINCT(drive)", :order => 'drive', :conditions => ['drive != ?',""]).collect{|p| [p.drive,p.drive]}, { :include_blank => true} )%>
+    <br>
 
     <%= label_tag(:grafic_card1, "Grafická karta:") %>
-    <%= text_field_tag :grafic_card1, params[:grafic_card1] %><br>
+    <%= select(nil, :grafic_card1, Notebook.all(:select => "DISTINCT(grafic_card)", :order => 'grafic_card', :conditions => ['grafic_card != ?',""]).collect{|p| [p.grafic_card,p.grafic_card]}, { :include_blank => true} )%>
+    <br>
 
-    <%= label_tag(:batery_life_time1, "Životnosť batérie:") %>
-    <%= text_field_tag :batery_life_time1, params[:batery_life_time1] %><br>
+    <%= label_tag(:batery_life_time1, "Výdrž na batérie:") %>
+    <%= select(nil, :batery_life_time1, Notebook.all(:select => "DISTINCT(batery_life_time)", :order => 'batery_life_time', :conditions => ['batery_life_time != ?',""]).collect{|p| [p.batery_life_time,p.batery_life_time]}, { :include_blank => true} )%>
+    <br>
 
     <%= label_tag(:card_reader1, "Čítačka kariet:  ") %>
     <%= radio_button_tag(:card_reader1, true) %>áno
@@ -138,23 +143,28 @@
     <%= radio_button_tag(:bluetooth2, false) %>nie<br>
 
     <%= label_tag(:network2, "Sieťová karta:") %>
-    <%= text_field_tag :network2, params[:network2] %><br>
+    <%= select(nil, :network2, Notebook.all(:select => "DISTINCT(network)", :order => 'network', :conditions => ['network != ?',""]).collect{|p| [p.network,p.network]}, { :include_blank => true} )%>
+    <br>
 
     <%= label_tag(:numeric_keyboard2, "Numerická klávesnica:  ") %>
     <%= radio_button_tag(:numeric_keyboard2, true) %>áno
     <%= radio_button_tag(:numeric_keyboard2, false) %>nie<br>
 
     <%= label_tag(:weight2, "Hmotnosť:") %>
-    <%= text_field_tag :weight2, params[:weight2], :size => 10 %><br>
+    <%= select(nil, :weight2, Notebook.all(:select => "DISTINCT(weight)", :order => 'weight', :conditions => ['weight != ?',""]).collect{|p| [p.weight,p.weight]}, { :include_blank => true} )%>
+    <br>
 
     <%= label_tag(:drive2, "Mechanika:") %>
-    <%= text_field_tag :drive2, params[:drive2] %><br>
+    <%= select(nil, :drive2, Notebook.all(:select => "DISTINCT(drive)", :order => 'drive', :conditions => ['drive != ?',""]).collect{|p| [p.drive,p.drive]}, { :include_blank => true} )%>
+    <br>
 
     <%= label_tag(:grafic_card2, "Grafická karta:") %>
-    <%= text_field_tag :grafic_card2, params[:grafic_card2] %><br>
+    <%= select(nil, :grafic_card2, Notebook.all(:select => "DISTINCT(grafic_card)", :order => 'grafic_card', :conditions => ['grafic_card != ?',""]).collect{|p| [p.grafic_card,p.grafic_card]}, { :include_blank => true} )%>
+    <br>
 
-    <%= label_tag(:batery_life_time2, "Životnosť batérie:") %>
-    <%= text_field_tag :batery_life_time2, params[:batery_life_time2] %><br>
+    <%= label_tag(:batery_life_time2, "Výdrž na batérie:") %>
+    <%= select(nil, :batery_life_time2, Notebook.all(:select => "DISTINCT(batery_life_time)", :order => 'batery_life_time', :conditions => ['batery_life_time != ?',""]).collect{|p| [p.batery_life_time,p.batery_life_time]}, { :include_blank => true} )%>
+    <br>
 
     <%= label_tag(:card_reader2, "Čítačka kariet:  ") %>
     <%= radio_button_tag(:card_reader2, true) %>áno
