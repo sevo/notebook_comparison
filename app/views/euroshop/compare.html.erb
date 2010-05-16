@@ -49,23 +49,23 @@
     <%= text_field_tag :disc_rotations1, params[:disc_rotations1], :size => 10 %><br>
 
     <%= label_tag(:webcam1, "Webkamera:  ") %>
-    <%= label_tag(:webcam1, "áno ") %> <%= radio_button :webcam1, params[:webcam1], true %>
-    <%= label_tag(:webcam1, "nie ") %> <%= radio_button :webcam1, params[:webcam1], false %><br>
+    <%= radio_button_tag(:webcam1, true) %>áno
+    <%= radio_button_tag(:webcam1, false) %>nie<br>
 
     <%= label_tag(:wifi1, "Wifi:") %>
-    <%= radio_button :wifi1, params[:wifi1], true %> áno
-    <%= radio_button :wifi1, params[:wifi1], false %>nie<br>
+    <%= radio_button_tag(:wifi1, true )%>áno
+    <%= radio_button_tag(:wifi1, false) %>nie<br>
 
     <%= label_tag(:bluetooth1, "Bluetooth:  ") %>
-    <%= radio_button :bluetooth1, params[:bluetooth1], true %>áno
-    <%= radio_button :bluetooth1, params[:bluetooth1], false %>nie<br>
+    <%= radio_button_tag(:bluetooth1, true) %>áno
+    <%= radio_button_tag(:bluetooth1, false) %>nie<br>
 
     <%= label_tag(:network1, "Sieťová karta:") %>
     <%= text_field_tag :network1, params[:network1] %><br>
 
     <%= label_tag(:numeric_keyboard1, "Numerická klávesnica:  ") %>
-    <%= radio_button :numeric_keyboard1, params[:numeric_keyboard1], true %>áno
-    <%= radio_button :numeric_keyboard1, params[:numeric_keyboard1], false %>nie<br>
+    <%= radio_button_tag(:numeric_keyboard1, true) %>áno
+    <%= radio_button_tag(:numeric_keyboard1, false) %>nie<br>
 
     <%= label_tag(:weight1, "Hmotnosť:") %>
     <%= text_field_tag :weight1, params[:weight1], :size => 10 %><br>
@@ -80,8 +80,8 @@
     <%= text_field_tag :batery_life_time1, params[:batery_life_time1] %><br>
 
     <%= label_tag(:card_reader1, "Čítačka kariet:  ") %>
-    <%= radio_button :card_reader1, params[:card_reader1], true %>áno
-    <%= radio_button :card_reader1, params[:card_reader1], false %>nie<br>
+    <%= radio_button_tag(:card_reader1, true) %>áno
+    <%= radio_button_tag(:card_reader1, false) %>nie<br>
 
     <%= label_tag(:OS1, "Operačný systém:") %>
     <%= text_field_tag :OS1, params[:OS1] %><br>
@@ -126,23 +126,23 @@
     <%= text_field_tag :disc_rotations2, params[:disc_rotations2], :size => 10 %><br>
 
     <%= label_tag(:webcam2, "Webkamera:  ") %>
-    <%= radio_button :webcam2, params[:webcam2], true %>áno
-    <%= radio_button :webcam2, params[:webcam2], false %>nie<br>
+    <%= radio_button_tag(:webcam2, true) %>áno
+    <%= radio_button_tag(:webcam2, false) %>nie<br>
 
     <%= label_tag(:wifi2, "Wifi:") %>
-    <%= radio_button :wifi2, params[:wifi2], true %>áno
-    <%= radio_button :wifi2, params[:wifi2], false %>nie<br>
+    <%= radio_button_tag(:wifi2, true) %>áno
+    <%= radio_button_tag(:wifi2, false) %>nie<br>
 
     <%= label_tag(:bluetooth2, "Bluetooth:  ") %>
-    <%= radio_button :bluetooth2, params[:bluetooth2], true %>áno
-    <%= radio_button :bluetooth2, params[:bluetooth2], false %>nie<br>
+    <%= radio_button_tag(:bluetooth2, true) %>áno
+    <%= radio_button_tag(:bluetooth2, false) %>nie<br>
 
     <%= label_tag(:network2, "Sieťová karta:") %>
     <%= text_field_tag :network2, params[:network2] %><br>
 
     <%= label_tag(:numeric_keyboard2, "Numerická klávesnica:  ") %>
-    <%= radio_button :numeric_keyboard2, params[:numeric_keyboard2], true %>áno
-    <%= radio_button :numeric_keyboard2, params[:numeric_keyboard2], false %>nie<br>
+    <%= radio_button_tag(:numeric_keyboard2, true) %>áno
+    <%= radio_button_tag(:numeric_keyboard2, false) %>nie<br>
 
     <%= label_tag(:weight2, "Hmotnosť:") %>
     <%= text_field_tag :weight2, params[:weight2], :size => 10 %><br>
@@ -157,8 +157,8 @@
     <%= text_field_tag :batery_life_time2, params[:batery_life_time2] %><br>
 
     <%= label_tag(:card_reader2, "Čítačka kariet:  ") %>
-    <%= radio_button :card_reader2, params[:card_reader2], true %>áno
-    <%= radio_button :card_reader2, params[:card_reader2], false %>nie<br>
+    <%= radio_button_tag(:card_reader2, true) %>áno
+    <%= radio_button_tag(:card_reader2, false) %>nie<br>
 
     <%= label_tag(:OS2, "Operačný systém:") %>
     <%= text_field_tag :OS2, params[:OS2] %><br>
@@ -178,21 +178,31 @@
     
 <% end %>
 
-<% unless @data1 == []%>
+<% unless ((@data1 == [])&&(@data2 == [])) %>
 <div id="graf" style="width: 700px; height: 500px; position: relative;"></div>
 
 <br>
 
 <div id="form_left" class="round">
 <% @data1.each do |e|   %>
-   <li><%= link_to e[2]+", Cena: "+e[1].to_s+"€", detail_path(:code => e[3]) %> <br></li>
+    <% if e[1].to_s == '0' then %>
+      <li><%= link_to e[2]+", Cena: neznáma", detail_path(:code => e[3])  %> <br></li>
+   <% else %>
+      <li><%= link_to e[2]+", Cena: "+e[1].to_s+"€", detail_path(:code => e[3])  %> <br></li>
+   <% end%>
 
 <%end%>
 </div>
 
 <div id="form_right" class="round">
 <% @data2.each do |e|   %>
-   <li><%= link_to e[2]+", Cena: "+e[1].to_s+"€", detail_path(:code => e[3])  %> <br></li>
+   <% if e[1].to_s == '0' then %>
+      <li><%= link_to e[2]+", Cena: neznáma", detail_path(:code => e[3])  %> <br></li>
+   <% else %>
+      <li><%= link_to e[2]+", Cena: "+e[1].to_s+"€", detail_path(:code => e[3])  %> <br></li>
+   <% end%>
+
+
 
 <%end%>
 </div>
@@ -268,6 +278,7 @@ $(function () {
                         }
                     }
                 }
+                if (y == 0) {y = '- '}
 
                 showTooltip(item.pageX, item.pageY,
                             "Priemerná cena: " + y +"€"+ ", " + z);

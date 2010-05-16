@@ -68,4 +68,6 @@ class Notebook < ActiveRecord::Base
     text += "/ " + drive if drive != nil
     text
   end
+
+  
 end
