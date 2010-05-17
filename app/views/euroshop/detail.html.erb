@@ -17,42 +17,46 @@
 <% end %>
 
 <%unless @notebook == nil%>
-<table>
-  <% unless @notebook.name==nil then%><tr><td>Názov</td><td><%= @notebook.name %></td></tr><% end %>
-  <% unless @notebook.mark==nil then%><tr><td>Značka</td><td><%= @notebook.mark %></td></tr><% end %>
-  <% unless @notebook.processor_type==nil then%><tr><td>Typ procesora</td><td><%= @notebook.processor_type %></td></tr><% end %>
-  <% unless @notebook.processor_freq==nil then%><tr><td>Frekvencia procesora</td><td><%= @notebook.processor_freq %> GHz</td></tr><% end %>
-  <% unless @notebook.display_diag==nil then%><tr><td>Veľkosť displeja</td><td><%= @notebook.display_diag %>"</td></tr><% end %>
-  <% unless ((@notebook.display_resolution_ver==nil)||(@notebook.display_resolution_hor==nil)) then%><tr><td>Rozlíšenie displeja</td><td><%= @notebook.display_resolution_hor %>px x <%=@notebook.display_resolution_ver %>px</td></tr><% end %>
-  <% unless @notebook.memory_capacity==nil then%><tr><td>RAM</td><td><%= @notebook.memory_capacity %> GB</td></tr><% end %>
-  <% unless @notebook.disc_capacity==nil then%><tr><td>Veľkosť disku</td><td><%= @notebook.disc_capacity %> GB</td></tr><% end %>
-  <% unless @notebook.disc_rotations==nil then%><tr><td>Otáčky disku</td><td><%= @notebook.disc_rotations %> ot/min</td></tr><% end %>
-  <% if @notebook.webcam==true then%><tr><td>Webkamera</td><td>áno</td></tr><% end %>
-  <% unless @notebook.network==nil then%><tr><td>Sieťová karta</td><td><%= @notebook.network %></td></tr><% end %>
-  <% if @notebook.wifi==true then%><tr><td>Wifi</td><td>áno</td></tr><% end %>
-  <% if @notebook.bluetooth==true then%><tr><td>Bluetooth</td><td>áno</td></tr><% end %>
-  <% if @notebook.numeric_keyboard==true then%><tr><td>Numerická klávesnica</td><td>áno</td></tr><% end %>
-  <% unless @notebook.weight==nil then%><tr><td>Hmotnosť</td><td><%= @notebook.weight %> kg</td></tr><% end %>
-  <% if @notebook.touchpad==true then%><tr><td>Touchpad</td><td>áno</td></tr><% end %>
-  <% if @notebook.trackpoint==true then%><tr><td>Trackpoint</td><td>áno</td></tr><% end %>
-  <% if @notebook.modem==true then%><tr><td>Modem</td><td>áno</td></tr><% end %>
-  <% unless @notebook.drive==nil then%><tr><td>Optická mechanika</td><td><%= @notebook.drive %></td></tr><% end %>
-  <% unless @notebook.grafic_card==nil then%><tr><td>Grafická karta</td><td><%= @notebook.grafic_card %></td></tr><% end %>
-  <% unless @notebook.batery_life_time==nil then%><tr><td>Výdrž na batérie</td><td><%= @notebook.batery_life_time %> hod.</td></tr><% end %>
-  <% if @notebook.card_reader==true then%><tr><td>Čítačka pamäťovích kariet</td><td>áno</td></tr><% end %>
-  <% unless @notebook.OS==nil then%><tr><td>Operačný systém</td><td><%= @notebook.OS %></td></tr><% end %>
-  <% unless @notebook.monitor_out==nil then%><tr><td>Výstup na monitor</td><td><%= @notebook.monitor_out %></td></tr><% end %>
-  <% unless @notebook.USB_number==nil then%><tr><td>Počet USB portov</td><td><%= @notebook.USB_number %></td></tr><% end %>
+<div id="detail_left">
+    <table>
+      <% unless @notebook.name==nil then%><tr><td>Názov</td><td><%= @notebook.name %></td></tr><% end %>
+      <% unless @notebook.mark==nil then%><tr><td>Značka</td><td><%= @notebook.mark %></td></tr><% end %>
+      <% unless @notebook.processor_type==nil then%><tr><td>Typ procesora</td><td><%= @notebook.processor_type %></td></tr><% end %>
+      <% unless @notebook.processor_freq==nil then%><tr><td>Frekvencia procesora</td><td><%= @notebook.processor_freq %> GHz</td></tr><% end %>
+      <% unless @notebook.display_diag==nil then%><tr><td>Veľkosť displeja</td><td><%= @notebook.display_diag %>"</td></tr><% end %>
+      <% unless ((@notebook.display_resolution_ver==nil)||(@notebook.display_resolution_hor==nil)) then%><tr><td>Rozlíšenie displeja</td><td><%= @notebook.display_resolution_hor %>px x <%=@notebook.display_resolution_ver %>px</td></tr><% end %>
+      <% unless @notebook.memory_capacity==nil then%><tr><td>RAM</td><td><%= @notebook.memory_capacity %> GB</td></tr><% end %>
+      <% unless @notebook.disc_capacity==nil then%><tr><td>Veľkosť disku</td><td><%= @notebook.disc_capacity %> GB</td></tr><% end %>
+      <% unless @notebook.disc_rotations==nil then%><tr><td>Otáčky disku</td><td><%= @notebook.disc_rotations %> ot/min</td></tr><% end %>
+      <% if @notebook.webcam==true then%><tr><td>Webkamera</td><td>áno</td></tr><% end %>
+      <% unless @notebook.network==nil then%><tr><td>Sieťová karta</td><td><%= @notebook.network %></td></tr><% end %>
+      <% if @notebook.wifi==true then%><tr><td>Wifi</td><td>áno</td></tr><% end %>
+      <% if @notebook.bluetooth==true then%><tr><td>Bluetooth</td><td>áno</td></tr><% end %>
+      <% if @notebook.numeric_keyboard==true then%><tr><td>Numerická klávesnica</td><td>áno</td></tr><% end %>
+      <% unless @notebook.weight==nil then%><tr><td>Hmotnosť</td><td><%= @notebook.weight %> kg</td></tr><% end %>
+      <% if @notebook.touchpad==true then%><tr><td>Touchpad</td><td>áno</td></tr><% end %>
+      <% if @notebook.trackpoint==true then%><tr><td>Trackpoint</td><td>áno</td></tr><% end %>
+      <% if @notebook.modem==true then%><tr><td>Modem</td><td>áno</td></tr><% end %>
+      <% unless @notebook.drive==nil then%><tr><td>Optická mechanika</td><td><%= @notebook.drive %></td></tr><% end %>
+      <% unless @notebook.grafic_card==nil then%><tr><td>Grafická karta</td><td><%= @notebook.grafic_card %></td></tr><% end %>
+      <% unless @notebook.batery_life_time==nil then%><tr><td>Výdrž na batérie</td><td><%= @notebook.batery_life_time %> hod.</td></tr><% end %>
+      <% if @notebook.card_reader==true then%><tr><td>Čítačka pamäťovích kariet</td><td>áno</td></tr><% end %>
+      <% unless @notebook.OS==nil then%><tr><td>Operačný systém</td><td><%= @notebook.OS %></td></tr><% end %>
+      <% unless @notebook.monitor_out==nil then%><tr><td>Výstup na monitor</td><td><%= @notebook.monitor_out %></td></tr><% end %>
+      <% unless @notebook.USB_number==nil then%><tr><td>Počet USB portov</td><td><%= @notebook.USB_number %></td></tr><% end %>
 
 
-   <% unless @ports == [] then %>
-      <% @ports.each do |e|%>
-        <tr><td><%= e.name %></td><td>áno</td></tr>
-      <% end %>
-   <% end %>     
+       <% unless @ports == [] then %>
+          <% @ports.each do |e|%>
+            <tr><td><%= e.name %></td><td>áno</td></tr>
+          <% end %>
+       <% end %>
 
-</table>
+    </table>
+</div>
+<div id="detail_right">
     <img src= "<%= @notebook.picture_link%>" width= "250" height="200">
+</div>    
 <% end%>    
 
 <% unless @data == [] then%>
