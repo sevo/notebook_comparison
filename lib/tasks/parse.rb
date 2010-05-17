@@ -218,7 +218,7 @@ require 'date'
                 p[:name] += popis[0]  unless popis[0]==nil
                 p[:name] += " "+popis[1] unless popis[1]==nil
 
-               notebook.name = p[:name] unless p[:name]==""git 
+               notebook.name = p[:name] unless p[:name]==""
                notebook.save()
 
               notebook_store=NotebookStore.find_by_notebook_id_and_store_id(notebook.id,obchod.id)
