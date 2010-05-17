@@ -2,12 +2,72 @@
 <project version="4">
   <component name="ChangeListManager" verified="true">
     <list default="true" readonly="true" id="e698d14f-348a-4f9c-955c-aaf96fccc380" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.rakeTasks" afterPath="$PROJECT_DIR$/.idea/.rakeTasks" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/euroshop.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/euroshop.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/euroshop_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/euroshop_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/euroshop/compare.html.erb" afterPath="$PROJECT_DIR$/app/views/euroshop/compare.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/development.log" afterPath="$PROJECT_DIR$/log/development.log" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/line.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/area_base.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/bar_glass.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/bar_filled.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/h_bar.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/y_axis_right.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/x_axis_label.rb" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/menu.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/assets/open-flash-chart-bar-clicking.swf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/radar_axis_labels.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/chart.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/line_base.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/pie.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/init.rb" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/log/development.log" afterPath="$PROJECT_DIR$/log/development.log" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/assets/javascripts/swfobject.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/tasks/open_flash_chart_tasks.rake" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/x_axis_labels.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/tooltip.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/uninstall.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/arrow.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/area_line.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/bar_3d.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/title.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/assets/open-flash-chart.swf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/bar_sketch.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/scatter_line.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/y_axis_labels.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/ofc_ajax.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/dot_base.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/shape.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/bar.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/base.rb" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/tasks/parse.rb" afterPath="$PROJECT_DIR$/lib/tasks/parse.rb" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/x_legend.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/test/open_flash_chart_test.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/bar_stack.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/bar_base.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/y_legend_right.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/upload_image.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/line_style.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/tags.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/line_dot.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/radar_axis.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/install.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/legend.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/y_axis_label.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/y_axis_base.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/README" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/euroshop_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/euroshop_controller.rb" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/Rakefile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/radar_spoke_labels.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/sugar.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/open_flash_chart_object.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/y_legend.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/MIT-LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/linear_regression.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/candle.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/x_axis.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/area_hollow.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/line_hollow.rb" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/scatter.rb" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.rakeTasks" afterPath="$PROJECT_DIR$/.idea/.rakeTasks" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/vendor/plugins/open_flash_chart/lib/open_flash_chart/y_axis.rb" afterPath="" />
     </list>
     <ignored path="WA.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,7 +94,7 @@
       <file leaf-file-name="compare.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/euroshop/compare.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="172" column="103" selection-start="8215" selection-end="8215" vertical-scroll-proportion="-26.666666">
+            <state line="172" column="103" selection-start="8215" selection-end="8215" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -52,7 +112,25 @@
       <file leaf-file-name="euroshop_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/euroshop_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="527" column="37" selection-start="15503" selection-end="15503" vertical-scroll-proportion="0.0">
+            <state line="579" column="81" selection-start="16930" selection-end="16930" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="parse.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/tasks/parse.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="220" column="63" selection-start="10059" selection-end="10059" vertical-scroll-proportion="0.03301887">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="store.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/store.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -67,10 +145,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="notebook.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="notebook.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/notebook.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="56" selection-start="2099" selection-end="2099" vertical-scroll-proportion="0.6447368">
+            <state line="54" column="56" selection-start="2099" selection-end="2099" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -104,7 +182,6 @@
         <option value="$PROJECT_DIR$/app/views/euroshop/pokus.html.erb" />
         <option value="$PROJECT_DIR$/app/views/pages/pokus.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/pages_controller.rb" />
-        <option value="$PROJECT_DIR$/lib/tasks/parse.rb" />
         <option value="$PROJECT_DIR$/app/views/euroshop/_compare.html.erb" />
         <option value="$PROJECT_DIR$/app/views/euroshop/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/euroshop/stores.html.erb" />
@@ -113,8 +190,9 @@
         <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/vendor/plugins/auto_complete/lib/auto_complete.rb" />
         <option value="$PROJECT_DIR$/app/views/euroshop/compare.html.erb" />
-        <option value="$PROJECT_DIR$/app/controllers/euroshop_controller.rb" />
         <option value="$PROJECT_DIR$/app/models/notebook.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/euroshop_controller.rb" />
+        <option value="$PROJECT_DIR$/lib/tasks/parse.rb" />
       </list>
     </option>
   </component>
@@ -151,37 +229,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="RailsProjectView">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WA" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WA" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WA" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WA" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controllers" />
-              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.ControllersFolderNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Problems" />
-      </pane>
+      <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -432,7 +480,37 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Favorites" />
+      <pane id="Scope">
+        <subPane subId="Problems" />
+      </pane>
+      <pane id="RailsProjectView">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WA" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WA" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WA" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WA" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.RailsModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controllers" />
+              <option name="myItemType" value="org.jetbrains.plugins.ruby.rails.projectView.v2.nodes.folders.ControllersFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -686,13 +764,13 @@
       <item index="0" class="java.lang.String" itemvalue="Rake.parse_xml" />
       <item index="1" class="java.lang.String" itemvalue="Rake.parse_detail" />
       <item index="2" class="java.lang.String" itemvalue="Rake.parse_pokus" />
-      <item index="3" class="java.lang.String" itemvalue="Rails.Production: WA" />
-      <item index="4" class="java.lang.String" itemvalue="Rails.Development: WA" />
-      <item index="5" class="java.lang.String" itemvalue="Rake.test" />
-      <item index="6" class="java.lang.String" itemvalue="Rake.spec" />
-      <item index="7" class="java.lang.String" itemvalue="Rake.db:migrate" />
-      <item index="8" class="java.lang.String" itemvalue="Ruby.init" />
-      <item index="9" class="java.lang.String" itemvalue="Ruby.Rakefile" />
+      <item index="3" class="java.lang.String" itemvalue="Ruby.init" />
+      <item index="4" class="java.lang.String" itemvalue="Ruby.Rakefile" />
+      <item index="5" class="java.lang.String" itemvalue="Rails.Production: WA" />
+      <item index="6" class="java.lang.String" itemvalue="Rails.Development: WA" />
+      <item index="7" class="java.lang.String" itemvalue="Rake.test" />
+      <item index="8" class="java.lang.String" itemvalue="Rake.spec" />
+      <item index="9" class="java.lang.String" itemvalue="Rake.db:migrate" />
     </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
@@ -805,56 +883,54 @@
         <state line="112" column="85" selection-start="5936" selection-end="5936" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lib/tasks/parse.rake">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="641" column="39" selection-start="17954" selection-end="17954" vertical-scroll-proportion="1.5763098" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/euroshop/compare.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="172" column="103" selection-start="8215" selection-end="8215" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="47" selection-start="2107" selection-end="2107" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/euroshop_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="579" column="81" selection-start="16930" selection-end="16930" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/store.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/cost.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="3" selection-start="159" selection-end="168" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/notebook.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="56" selection-start="2099" selection-end="2099" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/helpers/application_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/tasks/parse.rake">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="47" selection-start="2107" selection-end="2107" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/tasks/parse.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="174" column="20" selection-start="7287" selection-end="7296" vertical-scroll-proportion="-4.825397">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/euroshop/compare.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="172" column="103" selection-start="8215" selection-end="8215" vertical-scroll-proportion="-26.666666">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/euroshop_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="527" column="37" selection-start="15503" selection-end="15503" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/cost.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="3" selection-start="159" selection-end="168" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/notebook.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="56" selection-start="2099" selection-end="2099" vertical-scroll-proportion="0.6447368">
+        <state line="220" column="63" selection-start="10059" selection-end="10059" vertical-scroll-proportion="0.03301887">
           <folding />
         </state>
       </provider>

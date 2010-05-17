@@ -120,7 +120,14 @@ require 'date'
  end
 
    def self.parse_detail
-
+      filtre=[              #toto su adresy na zoznamy notebookov
+              "zbozi.aspx?vypis=pe2&skup=1&kat=122&c=710I1683O2693O2690O2694O2525O1968O1685O1682O2340O1692&skladem=0&page=",
+              "zbozi.aspx?vypis=pe2&skup=1&kat=122&c=710I1814O1691&skladem=0&page=",
+              "zbozi.aspx?vypis=pe2&skup=1&kat=122&c=711I1695O2698O1696O1816O1697P710I1688O1689&skladem=0&page=",
+              "zbozi.aspx?vypis=pe2&skup=1&kat=122&c=711I1698O1701O2691O1706O1699O2341O1703O1702O2155P710I1688O1689&skladem=0&page=",
+              "zbozi.aspx?vypis=pe2&skup=1&kat=122&c=710I2566O2567O2568&skladem=0&page=",
+              "zbozi.aspx?vypis=pe2&skup=1&kat=122&c=710I1690O1694O2692O2154&skladem=0&page="              
+              ]
 
      obchody = Store.find(:all)
      obchody.each do |obchod|
@@ -131,7 +138,10 @@ require 'date'
 
        pocet_stran = 0
        puts "parsing "+meno
-       url = adresa+"zbozi.aspx?vypis=pe2&cena=G200&skup=1&kat=122&pkat=1934O1646O1906O1647O1729O1710O1752O1937O1968O1969O1970O1788O1789O1790O1929O1918O1418O1913&sort=Popis&desc=0&skladem=0&page=1"
+       filtre.each do |f|
+       #url = adresa+"zbozi.aspx?vypis=pe2&cena=G200&skup=1&kat=122&pkat=1934O1646O1906O1647O1729O1710O1752O1937O1968O1969O1970O1788O1789O1790O1929O1918O1418O1913&sort=Popis&desc=0&skladem=0&page=1"
+       url = adresa+f
+       puts "filter: "+adresa+f+1.to_s
        begin
           doc = Nokogiri::HTML(open(url))
        rescue Exception
@@ -142,7 +152,8 @@ require 'date'
 
        pocet_stran.times do |p|
        #10.times do |p|
-       url = adresa+"zbozi.aspx?vypis=pe2&cena=G200&skup=1&kat=122&pkat=1934O1646O1906O1647O1729O1710O1752O1937O1968O1969O1970O1788O1789O1790O1929O1918O1418O1913&sort=Popis&desc=0&skladem=0&page="+(p+1).to_s
+       #url = adresa+"zbozi.aspx?vypis=pe2&cena=G200&skup=1&kat=122&pkat=1934O1646O1906O1647O1729O1710O1752O1937O1968O1969O1970O1788O1789O1790O1929O1918O1418O1913&sort=Popis&desc=0&skladem=0&page="+(p+1).to_s
+       url = adresa+f+(p+1).to_s
 
        begin
           doc = Nokogiri::HTML(open(url))
@@ -159,6 +170,7 @@ require 'date'
            [:link, "td[@class='tab1_nazev']/h3/a/@href|td[@class='tab1_nazev_doprodej']/h3/a/@href"],
            [:obrazok, "td[@class='tab1_nahled']/img/@rel"],
            [:cena_wdph, "td[@class='tab1_cena_eu']/text()"],
+           [:popis, "td[@class='tab1_nazev']/h3/a/text()"],
          ].collect do |name, xpath|
                if ((name == :link) || (name == :obrazok)) then detail[name] = "http://shop.euroshop.sk"+row.at_xpath(xpath).to_s.strip
                else detail[name] = row.at_xpath(xpath).to_s.strip
@@ -171,14 +183,14 @@ require 'date'
            obsah.each do |p|
              pole = {}
              begin
-                 stranka = Nokogiri::HTML(open(p[:link]+"&page=3-technicke-parametre"))
+                 stranka = Nokogiri::HTML(open(p[:link]+"&page=3-technicke-parametre")) #na tejto stranke su podrobnosti o notebooku
              rescue Exception
                  puts "Error: "+ p[:link]+"&page=3-technicke-parametre"
                  next
              end
              pole_obch = {}
              begin
-                 stranka_obch = Nokogiri::HTML(open(p[:link]+"&page=2-obchodne-parametre"))
+                 stranka_obch = Nokogiri::HTML(open(p[:link]+"&page=2-obchodne-parametre")) #na tejto stranke je cana a kod notebooku
              rescue Exception
                  puts "Error: "+ p[:link]+"&page=2-obchodne-parametre"
                  next
@@ -189,19 +201,65 @@ require 'date'
              end
 
              p[:podrobnosti] = ""
-             stranka.xpath("//table[@class='tab1']//tr[@class='tab1_rad1']|//tr[@class='tab1_rad2']").each {|e| pole[e.at_xpath("td[1]").to_s.strip]=e.at_xpath("td[2]").to_s }
+             stranka.xpath("//table[@class='tab1']//tr[@class='tab1_rad1']|//tr[@class='tab1_rad2']").each {|e| pole[e.at_xpath("td[1]").to_s.strip]=e.at_xpath("td[2]").to_s }   #rozdelenie tabulky na stranke do prvkov pola
              #stranka.xpath("//table[@class='tab1']//tr[@class='tab1_rad1']|//tr[@class='tab1_rad2']").each {|e| pole << e}
 
              #stranka.xpath("//div[@id='original']//p/text()").each {|e| pole << e.content}
              #pole_obch.each {|e| p[:podrobnosti]=p[:podrobnosti]+e.to_s+"<br>"}
-             if p[:kod]!=nil then
+
+
+              if p[:kod]!=nil then
                notebook = Notebook.find_or_create_by_code(p[:kod])
                notebook.code=p[:kod]
                notebook.picture_link=p[:obrazok]
+
+               popis = p[:popis].split(/[\s\/]/)  unless p[:popis] == nil
+                p[:name] = ""
+                p[:name] += popis[0]  unless popis[0]==nil
+                p[:name] += " "+popis[1] unless popis[1]==nil
+
+               notebook.name = p[:name] unless p[:name]==""git 
                notebook.save()
 
+              notebook_store=NotebookStore.find_by_notebook_id_and_store_id(notebook.id,obchod.id)
+              if notebook_store==nil then     #novy notebook v ponuke obchodu#potrebujem mapovanie medzi cenou a note a obchodom a note
+                cena = Cost.new
+                cena.cost_wdph=p[:cena_wdph]
+                cena.date=Date.today
+                cena.store_id=obchod.id
+                cena.notebook_id=notebook.id
+                cena.save
+
+
+                notebook_store = NotebookStore.new
+                notebook_store.cost_id=cena.id
+                notebook_store.notebook_id=notebook.id
+                notebook_store.store_id=obchod.id
+                notebook_store.save
+
+              else
+                cena2 = Cost.find(notebook_store.cost_id)
+                if (cena2!=nil and cena2.date==Date.today and cena2.cost_wdph.to_f<=p[:cena_wdph].to_f) then #osetrenie opakovania sa rovnakych produktov
+                  cena2.cost_wdph=p[:cena_wdph]
+                  cena2.save
+                elsif (cena2!=nil and cena2.date!=Date.today and cena2.cost_wdph.to_f!=p[:cena_wdph].to_f) then #zmenila sa cena produktu
+                     cena = Cost.new
+                     cena.cost_wdph=p[:cena_wdph]
+                     cena.date=Date.today
+                     cena.store_id=obchod.id
+                     cena.notebook_id=notebook.id
+                     cena.save
+
+                     notebook_store.cost_id=cena.id
+                     notebook_store.save
+                end
+              end
+
+
+
                pole.each do |key, value|
-                 notebook.code=p[:kod]
+                 notebook.memory_capacity=value.match("\\d+").to_s.to_i/1000 if key=~/Velikost operaÄnÃ­ pamÄti/
+                 notebook.memory_capacity=value.match("\\d+").to_s.to_i/1000 if key=~/Velikost operační paměti/
                  notebook.processor_freq=value.match("\\d+[,.]?\\d*").to_s.gsub(/[,.]/,'.').to_s.to_f if key=~/Frekvence procesoru/
                  notebook.display_diag=value.match("\\d+[,.]?\\d*").to_s.gsub!(/[,.]/,'.').to_f if key=~/ÃhlopÅÃ­Äka LCD/
                  notebook.display_diag=value.match("\\d+[,.]?\\d*").to_s.gsub!(/[,.]/,'.').to_f if key=~/Úhlopříčka LCD/
@@ -351,11 +409,11 @@ require 'date'
                end
                notebook.save();
              end
-
              end
            
 
 
+       end
        end
        end
 end

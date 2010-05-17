@@ -56,7 +56,7 @@ class EuroshopController < ApplicationController
     podmienky1 = []
     podmienky2 = []
     
-    if params.length >= 41 then
+    if params.length >= 41 then   #vytvaranie parametrov do dopytu na databazu
       
       unless params[:RAM1] == '' then
         if podmienky1[0] == nil then
@@ -540,7 +540,7 @@ class EuroshopController < ApplicationController
 
 
         cenaN = cena.first.avg.to_s.to_i
-        poradieN = (counter.to_s.to_i+rand(99)).modulo(100).to_s
+        poradieN = (counter.to_s.to_i+rand(200)).modulo(100).to_s
         counter += 1
         popis = e.popis
 
@@ -561,7 +561,7 @@ class EuroshopController < ApplicationController
 
 
         cenaN = cena.first.avg.to_s.to_i
-        poradieN = (counter.to_s.to_i+rand(99)).modulo(100).to_s
+        poradieN = (counter.to_s.to_i+rand(200)).modulo(100).to_s
         counter += 1
 
         counter += 1
