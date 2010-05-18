@@ -14,8 +14,14 @@
         <%= stylesheet_link_tag 'thingreenline/1', :media => 'screen,projection' %>
 <% end %>
 
+<p>
+    Pomocou týchto dvoch formulárov na vyhľadávanie notebookov je možné porovnať ceny notebookov vyhľadaných podľa vami zvolených kritérií.
+    <br>
+    Po odoslaní formulárov sa zobrazí graf v ktorom sú jednotlivé notebooky reprezentované bodmi usporiadanými podľa priemernej ceny v sledovaných obchodoch. 
 
-<% form_tag(:action => "compare", :method => "get") do %>
+
+</p>
+<% form_tag('/compare', {:method => "post"}) do %>
  <div id="form_left" class="round">
 
     <%= label_tag(:name1, "Názov:") %>
@@ -182,8 +188,7 @@
    
  </div>
  <div class="clear">
-    <%= submit_tag("Search") %>
-
+    <%= submit_tag("Porovnať") %>
  </div>
     
 <% end %>
@@ -216,7 +221,7 @@
 
 <%end%>
 </div>
-<% end %>
+
 <script id="source" language="javascript" type="text/javascript">   
 
 var p = [];
@@ -320,11 +325,11 @@ $(function () {
                         z = data2[pt][3 ]
                     }
                 }
-            window.location= 'detail?code='+z;
+            window.location= '/detail?code='+z;
         }
     });
 
 });
 </script>
-
+<% end %>
 

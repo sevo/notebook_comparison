@@ -56,7 +56,7 @@ class EuroshopController < ApplicationController
     podmienky1 = []
     podmienky2 = []
     
-    if params.length >= 41 then   #vytvaranie parametrov do dopytu na databazu
+    if params.length >= 40 then   #vytvaranie parametrov do dopytu na databazu
       
       unless params[:RAM1] == '' then
         if podmienky1[0] == nil then
@@ -530,7 +530,7 @@ class EuroshopController < ApplicationController
 
 
     @data1 = []
-    unless ((@notebooky1==nil)||(params.length < 41)) then
+    unless ((@notebooky1==nil)||(params.length < 40)) then
       @notebooky1.each do |e|
         cena = NotebookStore.all(
           :select => "
@@ -551,7 +551,7 @@ class EuroshopController < ApplicationController
     end
 
     @data2 = []
-    unless ((@notebooky2==nil)||(params.length < 41)) then
+    unless ((@notebooky2==nil)||(params.length < 40)) then
        @notebooky2.each do |e|
         cena = NotebookStore.all(
           :select => "
