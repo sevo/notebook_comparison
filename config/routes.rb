@@ -44,9 +44,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect ':controller/:action/:id.:format'
   map.detail '/detail', :controller=>'euroshop', :action => 'detail'
   map.compare '/compare', :controller=>'euroshop', :action => 'compare'
-  #map.index '/intro', :controller=>'euroshop', :action => 'index'
   map.stores '/stores', :controller=>'euroshop', :action => 'stores'
   map.root :controller => 'euroshop', :action => 'index'
-  #map.home '/', :controller => 'euroshop', :action => 'index' 
 
 end
