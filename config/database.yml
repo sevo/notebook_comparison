@@ -18,10 +18,10 @@ development:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: WA_development
+  database: wa_production
   pool: 5
-  username: root
-  password: devcechh
+  username: vos
+  password: VoSatRelaX
   socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -31,10 +31,10 @@ test:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: WA_test
+  database: wa_production
   pool: 5
-  username: root
-  password: devcechh
+  username: vos
+  password: VoSatRelaX
   socket: /var/run/mysqld/mysqld.sock
 
 production:
