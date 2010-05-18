@@ -41,8 +41,8 @@ production:
   adapter: mysql
   encoding: utf8
   reconnect: false
-  database: WA_production
+  database: wa_production
   pool: 5
-  username: root
-  password: 
+  username: vos
+  password: VoSatRelaX
   socket: /var/run/mysqld/mysqld.sock
