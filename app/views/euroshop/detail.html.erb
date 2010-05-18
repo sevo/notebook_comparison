@@ -97,7 +97,9 @@ $(function () {
                grid: { hoverable: true, clickable: false },
                yaxis: {minTickSize: 25},
                xaxis: {
-                        mode: "time"
+                        mode: "time",
+                        timeformat: "%d %b %y",
+                        minTickSize: [2, "day"] 
                     }
 
              });

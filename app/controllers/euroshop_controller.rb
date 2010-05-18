@@ -87,20 +87,20 @@ class EuroshopController < ApplicationController
 
       unless params[:processor_freq1] == '' then
         if podmienky1[0] == nil then
-          podmienky1[0] = 'processor_freq = ?'
+          podmienky1[0] = 'round(processor_freq,2) = ?'
         else
-          podmienky1[0] = podmienky1[0]+' AND processor_freq = ?'
+          podmienky1[0] = podmienky1[0]+' AND round(processor_freq,2) = ?'
         end
         podmienky1 << params[:processor_freq1]
       end
 
       unless params[:display_diag1] == '' then
         if podmienky1[0] == nil then
-          podmienky1[0] = 'display_diag = ?'
+          podmienky1[0] = 'round(display_diag,2) = ?'
         else
-          podmienky1[0] = podmienky1[0]+' AND display_diag = ?'
+          podmienky1[0] = podmienky1[0]+' AND round(display_diag,2) = ?'
         end
-        podmienky1 << params[:display_diag1]
+        podmienky1 << params[:display_diag1].to_f
       end
 
       unless params[:display_resolution_hor1] == '' then
@@ -316,20 +316,20 @@ class EuroshopController < ApplicationController
 
       unless params[:processor_freq2] == '' then
         if podmienky2[0] == nil then
-          podmienky2[0] = 'processor_freq = ?'
+          podmienky2[0] = 'round(processor_freq,2) = ?'
         else
-          podmienky2[0] = podmienky2[0]+' AND processor_freq = ?'
+          podmienky2[0] = podmienky2[0]+' AND round(processor_freq,2) = ?'
         end
         podmienky2 << params[:processor_freq2]
       end
 
       unless params[:display_diag2] == '' then
         if podmienky2[0] == nil then
-          podmienky2[0] = 'display_diag = ?'
+          podmienky2[0] = 'round(display_diag,2) = ?'
         else
-          podmienky2[0] = podmienky2[0]+' AND display_diag = ?'
+          podmienky2[0] = podmienky2[0]+' AND round(display_diag,2) = ?'
         end
-        podmienky2 << params[:display_diag2]
+        podmienky2 << params[:display_diag2].to_f
       end
 
       unless params[:display_resolution_hor2] == '' then
