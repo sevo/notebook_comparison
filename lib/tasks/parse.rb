@@ -54,7 +54,7 @@ require 'date'
           end
 
           detail[:processor_type] = detail[:podkategoria]+" "+detail[:popis].match("[a-zA-Z]+ ?-?[0-9]+\/").to_s.delete("/").to_s unless(detail[:podkategoria]== "Mini notebook"|| detail[:podkategoria]== "Tablet PC")
-          popis.each {|e| detail[:processor_type]=detail[:processor_type]+" "+e if ((e=~/i[\d]+/)!=nil) } if ((detail[:podkaregoria]=~/Intel Core i/)!=nil)
+          popis.each {|e| detail[:processor_type]=detail[:processor_type]+" "+e if ((e=~/i[\d]+/)!=nil) } if ((detail[:podkategoria]=~/Intel Core i/)!=nil)
           popis.each {|e| detail[:processor_type]=e if ((e=~/[a-zA-Z]+ ?-?[0-9]+\z/)!=nil) } if (detail[:podkategoria]== "Mini notebook"|| detail[:podkategoria]== "Tablet PC")
 
           popis.each {|e| detail[:memory_capacity]= eval(e.delete('B').delete('G')).to_s if ((e=~/\A\d(GB?)?\z/)||(e=~/\A(\d\+)?\dG?\z/))&&(e!=nil)}
